@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	
+	<!--
+	  -- Copyright 2018 Giulio Bosco (giuliobva@gmail.com)
+	  --
+	  -- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+	  -- documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+	  -- the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+	  -- and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+	  -- The above copyright notice and this permission notice shall be included in all copies or substantial portions
+	  -- of the Software.
+	  --
+	  -- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+	  -- TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+	  -- THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+	  -- CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+	  -- DEALINGS IN THE SOFTWARE.
+	  -->
+	
+	<!--
+	  -- project: Worldcup
+	  -- description: SAMT I2AA - Modulo 307 - Test 3
+	  --
+	  -- author: Giulio Bosco (giuliobva@gmail.com)
+	  -- version: 1.0
+	  -- date: 15.05.2018
+	  --
+	  -- file: index.html
+	  -->
+	
+	<meta property="og:type" content="website">
+	<meta name="keywords" content="<keywords>">
+	<meta property="og:title" content="<title>">
+	<meta name="description" content="<description>">
+	<meta property="og:description" content="<descriptio>">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<!-- pages title -->
+	<title>worldcup</title>
+	
+	<!-- stylesheet - CSS -->
+	<link rel="stylesheet" type="text/css" href="../../../lib/font/font-awesome.min.css">    <!-- special characters -->
+	<link rel="stylesheet" type="text/css" href="../../../lib/css/bootstrap.min.css">                 <!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="style.css">                                         <!-- page style -->
+	<!-- Scripts - JavaScript -->
+	<script src="../../../lib/js/jquery.js"></script>                                                 <!--- jQuery ---->
+	<script src="../../../lib/js/utility.js"></script>                                                <!--- Utility --->
+</head>
+<body>
+
+<script>
+	function selGroup(obj) {
+		group = obj.value;
+		getGroups();
+	}
+	function selStadium(obj) {
+		stadium = obj.value;
+		getStadiums();
+	}
+</script>
+
+<!-- Stadium Table -->
+<div class="stadium">
+	<div class="col-sm-6">
+		<div id="stadium-head">
+			<span id="stadium-name"></span>
+			<select id="stadium-sel">
+			
+			</select>
+			<br>
+			Capienza: <span id="stadium-cap"></span>
+		</div>
+		<div id="stadium-match">
+		
+		</div>
+	</div>
+	<img class="col-sm-6" id="stadium-img" src="logo/rus.gif">
+</div>
+
+<!-- Groups Table -->
+<div class="group">
+	<div id="group-head">
+	</div>
+	<div id="group-teams">
+	
+	</div>
+</div>
+
+
+
+<script src="gruppi.js"></script>
+</body>
+</html>

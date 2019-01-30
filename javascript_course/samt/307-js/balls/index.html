@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html onclick="addBall()">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	
+	<!-- Stylesheets - CSS -->
+	<link rel="stylesheet" type="text/css" href="../../../lib/font/font-awesome.min.css">    <!-- special characters -->
+	<link rel="stylesheet" type="text/css" href="../../../lib/css/bootstrap.min.css">        <!-- Bootstrap -->
+	
+	<!-- Page's StyleSheets - CSS -->
+	<style>
+		* {margin: 0; padding: 0}
+		body{height: 100%;width: 100%;}
+		img {
+			position: fixed;
+		}
+		
+		#back-home {
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			color: black;
+		}
+	</style>
+	
+	<!-- Scripts - JavaScript -->
+	<script src="../../../lib/js/jquery.js"></script>                                        <!-- jQuery -->
+	<script src="../../../lib/js/utility.js"></script>                                       <!-- My Utility -->
+	
+	<!-- Page's Scripts - JavaScript -->
+	<script src="js/app.js"></script>
+</head>
+<body>
+
+<div id="back-home"><a class="fa fa-home fa-4x" href="../../index.html"></a></div>
+
+<img class="ball" id="b0" src="img/1.png">
+
+<script>
+	start();
+</script>
+
+</body>
+</html>

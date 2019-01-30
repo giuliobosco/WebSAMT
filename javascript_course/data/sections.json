@@ -1,0 +1,41 @@
+{
+  "coding": {
+	"title": "coding",
+	"firstTitle": "java",
+	"firstImage": "assets/img/coding/java.png",
+	"firstDes": "Java è uno dei linguaggi di programmazione pi&ugrave; diffuso nel mondo per le applicazioni, per il semplice fatto che &egrave; multipiattaforma, funzionano sia su Microsoft Windows, che su Mac OS X e sui sistemi operativi basati su UNIX / LINUX.",
+	"secondTitle": "C#",
+	"secondImage": "assets/img/coding/cs.png",
+	"secondDes": "C# è un linguaggio di programmazione sviluppato da microsoft. Quest'ultimo permette di sviluppare programmi per Shell, interfaccie grafiche, e siti. Durante il primo anno si creano programmi per Shell e interfaccie grafiche, con il metodo Windows Form Application. Durante il secondo anno invece si passa alle WPF App, che sono le applicazioni con interfaccia grafica responsive.",
+	"thirdTitle": "Arduino",
+	"thirdImage": "assets/img/coding/arduino.png",
+	"thirdDes": "Implementare funzioni di controllo con arduino. Arduino è un micro controllore sviluppato in Italia.",
+	"html": "<ul><li>ciao</li><li>ciaosotto</li></ul>"
+  },
+  "web": {
+	"title": "web development",
+	"firstTitle": "HTML5 & CSS3",
+	"firstImage": "assets/img/web/html-css.png",
+	"firstDes": "HTML5 & CSS3 sono i linguaggi di fortmattazione per i contenuti di pagine web statiche più difusi. Questi servono per formattare ed impaginare i contenuti dei siti.",
+	"secondTitle": "JS",
+	"secondImage": "assets/img/web/js.png",
+	"secondDes": "JS (JavaScript) è il linguaggio di programmazione web piu diffuso, con questo viene sviluppato il front-end dei siti. Con JS vengono usate i framework più comuni, jQuery e AngularJS.",
+	"thirdTitle": "PHP & MySQL",
+	"thirdImage": "assets/img/web/php-mysql.png",
+	"thirdDes": "PHP è il linguaggio di programmazione usato per il back-end, mentre MySQL è il linguaggio usato per i database, dove vengono salvati i dati.",
+	"html": "<ul><li>ciaoweb</li><li>ciaosottoweb</li></ul>"
+  },
+  "systems": {
+  	"title": "it management",
+  	"firstTitle": "networks",
+  	"firstImage": "assets/img/systems/cisco.png",
+  	"firstDes": "Gestione di reti basate su infrastruttura Cisco, Router e Switch.",
+  	"secondTitle": "UNIX/Linux Servers",
+  	"secondImage": "assets/img/systems/linux.png",
+  	"secondDes": "Installazione e gestione di server basati su linux, con i prodotti piu comuni, ",
+  	"thirdTitle": "Microsoft Windows Servers",
+  	"thirdImage": "assets/img/systems/windows-server.png",
+  	"thirdDes": "Implementare funzioni di controllo con arduino. Arduino è un micro controllore sviluppato in Italia.",
+	"html": "<ul><li>ciaosys</li><li>ciaosottosys</li></ul>"
+  }
+}

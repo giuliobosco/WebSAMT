@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:http="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<link rel="stylesheet" type="text/css" href="id.css">
+
+	<script src="../jquery.js"></script>
+</head>
+<body>
+
+<script src="id.js"></script>
+
+<div id="asker" class="win col-md-12 full-height text-center disolver-on" style="display: block">
+	<div class="offset-3 col-md-6 half-height win-cont">
+		<h1>Casino Dices Table</h1>
+		<br><br>
+		<p>Enter your date of birth.</p>
+
+		<p id="wrong-date"></p>
+		<input type="text" name="tday" id="tday" placeholder="yyyy-mm-dd">
+
+		<input type="button" name="bday" id="bday" value="check" onclick="check()">
+
+	</div>
+</div>
+
+<div class="game col-md-9 full-height vertical-padding float-left">
+	<div class="desk full-height text-center">
+		<div class="dices">
+			<iframe src="dadi/dado.html" class="dice"></iframe>
+			<iframe src="dadi/dado.html" class="dice"></iframe>
+			<br>
+			<iframe src="dadi/dado.html" class="dice"></iframe>
+			<iframe src="dadi/dado.html" class="dice"></iframe>
+		</div>
+	</div>
+</div>
+
+<div class=" options col-md-3 full-height vertical-padding no-margin float-left">
+	<img class="dices-image" src="img/dices.jpg">
+
+	<hr>
+	<div class="money">
+		<div class="mybudget vertical-margin">5770$</div>
+
+		<input id="myBet" class="col-md-6 float-left" type="number">
+
+		<div class="dollar col-md-2 float-left no-margin">&dollar;</div>
+
+		<div class="roles col-md-4 float-left no-padding">
+			Minimal bet: &nbsp;&nbsp;&nbsp;5&dollar;<br>
+			Maximal bet: &nbsp;&nbsp;All In
+		</div>
+
+		<input type="range" min="5" max="50" value="5" step="5" class="slider vertical-margin" id="myRange" oninput="changeMyBet($('#myRange').val())">
+		<hr>
+	</div>
+
+	<div class="score offset-1 col-md-4 float-left">
+		YOU:
+		<span id="u-score" class="score-cont col-md-12">50</span>
+	</div>
+
+	<div class="score offset-2 col-md-4 float-left">TABLE:
+		<span id="t-score" class="score-cont col-md-12">50</span>
+	</div>
+
+	<input id="go" type="button" value="GO!" class="go-button col-md-12 vertical-margin" onclick="game()">
+
+	<hr>
+
+	<input id="back-home" type="button" value="Back to HOME" class="col-md-12 vertical-margin" onclick="window.location.href='http://samtinfo.ch/i16bosgiu/web'">
+</div>
+
+<div class="table-budget-box">
+	The Table have <span class="table-budget">50&dollar;</span>
+</div>
+
+<div id="u-win"class="win col-md-12 full-height text-center disolver-off">
+	<div class="offset-3 col-md-6 half-height win-cont">
+		<h1>YOU WIN!</h1>
+		<br><br>
+		<p>If you whant to play again click on the button bellow, in case the table you will start with 10&dollar; benefit.</p>
+		<br><br><br>
+		<input type="button" value="play again" class="col-md-3 go-button" onclick="playAgainMy()">
+	</div>
+</div>
+
+<div id="t-win" class="win col-md-12 full-height text-center disolver-off">
+	<div class="offset-3 col-md-6 half-height win-cont">
+		<h1>Computer WIN!</h1>
+		<br><br>
+		<p>If you whant to replay click on the botton below, in case the table will start with 10&dollar; benefit.</p>
+		<br><br><br>
+		<input type="button" value="play again" class="col-md-3 go-button" onclick="playAgainTable()">
+	</div>
+</div>
+
+<script>setup();</script>
+
+</body>
+</html>

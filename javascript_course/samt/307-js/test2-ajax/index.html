@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="cities of the world">
+    <meta name="keywords" content="world cities">
+    <meta name="author" content="Giulio Bosco">
+    <meta name="date" content="27/03/2018">
+    <meta charset="utf-8">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        [class*="col-"] {
+            float: left;
+            padding: 15px;
+        }
+
+        html {
+            font-family: "Lucida Sans", sans-serif;
+        }
+
+        header {
+            background-color: #9933cc;
+            color: #ffffff;
+            padding: 15px;
+        }
+
+        .menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li {
+            padding: 8px;
+            margin-bottom: 7px;
+            background-color: #33b5e5;
+            color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        }
+
+        .menu li:hover {
+            background-color: #0099cc;
+        }
+
+        aside {
+            background-color: #33b5e5;
+            padding: 15px;
+            color: #ffffff;
+            text-align: center;
+            font-size: 14px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        }
+
+        footer {
+            background-color: #0099cc;
+            color: #ffffff;
+            text-align: center;
+            font-size: 12px;
+            padding: 15px;
+        }
+
+        span {
+            position: absolute;
+            padding-right: 40px;
+            right: 0px;
+        }
+
+        /* For mobile phones: */
+        [class*="col-"] {
+            width: 100%;
+        }
+
+        .col-6 p {
+            background: rgba(80, 80, 80, 0.5);
+            color: white;
+        }
+
+        .col-6 {
+            background: url(../../../assets/img/samt/307-js/test2/citybw.jpg);
+            background-size: auto auto;
+            margin-top: 15px;
+        }
+
+        @media only screen and (min-width: 768px) {
+            /* For desktop: */
+            .col-1 {
+                width: 8.33%;
+            }
+
+            .col-2 {
+                width: 16.66%;
+            }
+
+            .col-3 {
+                width: 25%;
+            }
+
+            .col-4 {
+                width: 33.33%;
+            }
+
+            .col-5 {
+                width: 41.66%;
+            }
+
+            .col-6 {
+                width: 50%;
+            }
+
+            .col-7 {
+                width: 58.33%;
+            }
+
+            .col-8 {
+                width: 66.66%;
+            }
+
+            .col-9 {
+                width: 75%;
+            }
+
+            .col-10 {
+                width: 83.33%;
+            }
+
+            .col-11 {
+                width: 91.66%;
+            }
+
+            .col-12 {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <script src="../../../lib/js/jquery.js"></script>
+    <!-- Clock Manager -->
+    <script>
+
+
+
+        /**
+         * Fuso orario parigi.
+         */
+        const parigi = 0;
+        /**
+         * Fuso orario Tokyo.
+         */
+        const tokyo = +8;
+        /**
+         * Fuso orario Cairo.
+         */
+        const cairo = +1;
+
+        /**
+         *  Fuso orario usato.
+         */
+        var currentCity = new Date().getTimezoneOffset() -1;
+        /**
+         * Indicatore per scrivere data o ora.
+         * Se questa variabile è true verra scritta nell'header l'ora. Mentre se è false la data.
+         * @type {Boolean}
+         */
+        var displaTime = new Boolean(true);
+
+        /**
+         * Crea l'oggetto che conterra l'orologio o la data nell'header.
+         */
+        function createClock() {
+            $('<span>').attr('id','clock')
+                .appendTo('#title');
+            printClock();
+            $('#clockManager').text('Hide Clock').attr('onclick','changeClock()');
+        }
+
+        /**
+         * Inverte orologio e data.
+         */
+        function changeClock() {
+            displaTime = !displaTime;
+            printClock();
+            if (displaTime) {
+                $('#clockManager').text('Hide Clock');
+            } else {
+                $('#clockManager').text('Show Clock');
+            }
+        }
+
+        /**
+         * Scrive nell'oggetto per l'orologio e la data.
+         */
+        function printClock() {
+            var date = calcTime(currentCity);
+            var display = "";
+            if (displaTime) {
+                display = (date.getHours()<10?'0'+date.getHours():date.getHours())
+                    + ':'
+                    + (date.getMinutes()<10?'0'+date.getMinutes():date.getMinutes());
+            } else {
+                const dayNames = ['Domenica','Lunedi','Martedi', 'Mercoledi','Giovedi','Venerdi','Sabato'];
+                const monthNames = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno",
+                    "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"
+                ];
+                display = dayNames[date.getDay()] + ' ' + date.getDate() + ' ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
+            }
+            $('#clock').text(display);
+        }
+
+        /**
+         * Calcola la data e l'ora con il fuso orario
+         * @param offset {float} Differenza di orario da Londra (GMT).
+         * @returns {Date} Data con fuso orario.
+         */
+        function calcTime(offset) {
+            var d = new Date();
+            var utc = d.getTime() - (d.getTimezoneOffset() * 60000);
+            var nd = new Date(utc + (3600000*offset));
+            return nd;
+        }
+
+        /**
+         * Clock per cambiare l'ora o la data nell'header.
+         * @type {number}
+         */
+        var clock = setInterval(printClock(), 1000);
+
+
+        
+    </script>
+</head>
+<body>
+
+<header>
+    <h1 id="title">TOWN</h1>
+</header>
+
+<div class="row">
+
+    <div class="col-3 right">
+        <aside>
+            <h2>Area</h2>
+            <p id="area">In geography, statistics and archaeology, a settlement, locality or populated place is a
+                community in
+                which people live.</p>
+            <h2>Population</h2>
+            <p id="population">In the field of geospatial predictive modeling, settlements are "a city, town, village
+                ghost or other
+                agglomeration of buildings where people live and work.</p>
+            <h2>Etimology</h2>
+            <p id="etimology">A settlement conventionally includes its constructed facilities such as roads</p>
+        </aside>
+    </div>
+
+    <div class="col-6">
+        <h1 id="city">The City</h1>
+        <p id="text">A city is a large and permanent human settlement. Although there is no agreement on how a city is
+            distinguished from a town in general English language meanings, many cities have a particular
+            administrative, legal, or historical status based on local law.
+
+            Cities generally have complex systems for sanitation, utilities, land usage, housing, and transportation.
+            The concentration of development greatly facilitates interaction between people and businesses, sometimes
+            benefiting both parties in the process, but it also presents challenges to managing urban growth.
+
+            A big city or metropolis usually has associated suburbs and exurbs. Such cities are usually associated with
+            metropolitan areas and urban areas, creating numerous business commuters traveling to urban centers for
+            employment. Once a city expands far enough to reach another city, this region can be deemed a conurbation or
+            megalopolis. Damascus is arguably the oldest city in the world. In terms of population, the largest city
+            proper is Shanghai, while the fastest-growing is Dubai.</p>
+    </div>
+
+
+    <div class="col-3 menu">
+        <ul>
+            <li onclick="setCity(0)" onmouseover="previewCity(0)" onmouseleave="leavePreviewCity()">Damascus</li>
+            <li onclick="setCity(1)" onmouseover="previewCity(1)" onmouseleave="leavePreviewCity()">Shanghai</li>
+            <li onclick="setCity(2)" onmouseover="previewCity(2)" onmouseleave="leavePreviewCity()">Dubai</li>
+            <li onclick="setCity(3)" onmouseover="previewCity(3)" onmouseleave="leavePreviewCity()">Bern</li>
+            <script>$('<li>').attr('onclick', 'createClock()').attr('id', 'clockManager').text('Show Clock').appendTo('ul');</script>
+        </ul>
+    </div>
+</div>
+
+<footer>
+    <p>Copyright &copy; Giulio Bosco</p>
+</footer>
+
+<script>
+	
+	var oldCity = 'citybw.jpg';
+    
+    function setCity(index) {
+	    $.ajax({
+		    type: 'GET',
+		    url: 'capital.xml',
+		    dataType: 'xml',
+		    success: function (data) {
+                XMLReader(data, index);
+		    }
+            //success: XMLReader(data)
+	    });
+    }
+    
+    function XMLReader(data, index) {
+	    var cityName = $(data).find('CITIES')[index].getElementsByTagName('NAME')[0].innerHTML;
+	    var cityDesc = data.getElementsByTagName('TOWN')[index].childNodes[0].nodeValue;
+	
+	    var area = data.getElementsByTagName('AREA')[index].childNodes[0].nodeValue;
+	    var population = data.getElementsByTagName('POPULATION')[index].childNodes[0].nodeValue;
+	    var etimology = data.getElementsByTagName('ETYMOLOGY')[index].childNodes[0].nodeValue;
+	    var bg = data.getElementsByTagName('BG')[index].childNodes[0].nodeValue;
+	    
+	    writer(cityName, cityDesc, area, population, etimology, bg);
+	    oldCity = bg;
+    }
+    
+    function writer(name, desc, area, population, etimology, bg) {
+        $('#city').text(name);
+        $('#text').text(desc);
+        $('#area').text(area);
+        $('#population').text(population);
+        $('#etimology').text(etimology);
+	
+	    $('.col-6').css('background','url(../../../assets/img/samt/307-js/test2/' + bg);
+	    console.log(bg);
+    }
+    
+    function previewCity(index) {
+        $.ajax({
+            type: 'GET',
+            url: 'capital.xml',
+            dataType: 'xml',
+            success: function (data) {
+                var bg = $(data).find('CITIES')[index].getElementsByTagName('BG')[0].innerHTML;
+                $('.col-6').css('background', 'url(../../../assets/img/samt/307-js/test2/' + bg);
+            }
+        });
+    }
+    
+    function leavePreviewCity() {
+	    $('.col-6').css('background', 'url(../../../assets/img/samt/307-js/test2/' + oldCity);
+    }
+</script>
+
+
+</body>
+</html>
+

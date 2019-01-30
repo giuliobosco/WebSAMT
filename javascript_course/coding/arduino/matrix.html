@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<!--
+	  -- Copyright 2018 Giulio Bosco (giuliobva@gmail.com)
+	  --
+	  -- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+	  -- documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+	  -- the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+	  -- and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+	  -- The above copyright notice and this permission notice shall be included in all copies or substantial portions
+	  -- of the Software.
+	  --
+	  -- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+	  -- TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+	  -- THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+	  -- CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+	  -- DEALINGS IN THE SOFTWARE.
+	  -->
+	
+	<!--
+	  -- project: gb (<git-repo>)
+	  -- description: Giulio Bosco's Website
+	  --
+	  -- author: Giulio Bosco (giuliobva@gmail.com)
+	  -- version: 1.0
+	  -- date: 06.05.2018
+	  --
+	  -- file: index.html
+	  -->
+	
+	<meta charset="UTF-8">
+	<meta property="og:type" content="website">
+	<meta name="keywords" content="<keywords>">
+	<meta property="og:title" content="<title>">
+	<meta name="description" content="<description>">
+	<meta property="og:description" content="<descriptio>">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<!-- pages title -->
+	<title>giulio bosco | home</title>
+	
+	<!-- stylesheet - CSS -->
+	<link rel="stylesheet" type="text/css" href="../../lib/font/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../../lib/font/font-awesome.min.css">
+	<!-- special characters -->
+	<link rel="stylesheet" type="text/css" href="../../lib/css/bootstrap.min.css">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="../../assets/css/project.css">
+	
+	<!-- Scripts - JavaScript -->
+	<script src="../../lib/js/jquery.js"></script>
+	<!--- jQuery ---->
+	<script src="../../lib/js/utility.js"></script>
+	<!--- Utility --->
+</head>
+<body ng-app="WorksApp">
+
+<nav class="float-left">
+	<div class="container">
+		<ul class="text-left float-left list-inline">
+			<li>giulio bosco</li>
+		</ul>
+		<ul class="text-right float-right list-inline">
+			<li><a href="../../index.html">home</a></li>
+			<li><a href="#">WEB development</a></li>
+			<li><a href="../index.htm">coding</a></li>
+			<li><a href="#systems">IT management</a></li>
+			<li><a href="#works">works</a></li>
+			<!-- clients -->
+			<li><a href="#contacts">contacts</a></li>
+		</ul>
+	</div>
+</nav>
+
+<header>
+	<div class="container">
+		<div class="float-left">
+			<h3>
+				<small>Project:</small>
+				Control a Led Matrix and a Relay From a Movement Sensor
+			</h3>
+		</div>
+	</div>
+</header>
+
+<article class="odd-article">
+	<div class="container">
+		<div class="col-md-7">
+			<img class="col-md-12" src="../../assets/img/coding/arduino/matrix-sensor-relay.png">
+		</div>
+		<div class="col-md-4  col-md-offset-1">
+			<h4>Project Authors:</h4>
+			<ul>
+				<li>Giulio Bosco</li>
+			</ul>
+			<br>
+			<h4>Project Description</h4>
+			<p>
+				Creare un codice d'esempio per ogni elemento ed uno schema di montaggio per ogni componente
+				assegnato.<br>
+				lista dei componenti da utilizzare:
+			</p>
+			<ul>
+				<li>Matrice di led 8x8 single color</li>
+				<li>Sensore di movimento</li>
+				<li>Relay ad un canale</li>
+			</ul>
+			
+			<br>
+			<h4 class="more"><a href="../../assets/code/coding/arduino/matrix.zip">download zipped project</a></h4>
+		</div>
+	</div>
+</article>
+
+<article class="even-article">
+	<div class="container">
+		<div class="col-md-5">
+			<h2>Matrice di led 8x8 single color</h2>
+			<br>
+			
+			<p>
+				La matrice di led single color ha 16 pin, 8 comandano GND delle righe, mentre gli altri 8 controllano
+				il VIN delle colonne. Controllando le intersezioni fra il GND e il VIN si riesce ad accendere i led
+				desiderati.
+			</p>
+			<p>
+				Per utilizzare correttamente la matrice sono stati creati 3 metodi e due array costanti.<br>
+				L'array COLS contiene i numeri dei pin collegati alle colonne, mentre il ROWS contiene le righe.
+			</p>
+			<p>
+				Il metodo <code>matrixSetup()</code> imposta tutti i pin della matrice (ROWS & COLS) come OUTPUT; infine
+				spegne tutti i pin.<br>
+			</p>
+			<p>
+				Il metodo <code>onMatrix(int r, int c)</code> serve per controllare i pin della matrice. Inserendo le
+				coordinate del led che si vuole accendere questo verr&agrave; acceso. Mentre se viene inserito il numero
+				della lunghezza del'array nelle colone o nelle righe, verr&agrave; acceso tutta la riga o colonna.
+			</p>
+			<p>
+				Il metodo <code>offMatrix(int r, int c)</code> ha lo stesso funzionamento del metodo
+				<code>onMatrix(r, c)</code> ma al posto di accendere il led lo spegne.
+			</p>
+		</div>
+		<div class="col-md-6 col-md-offset-1">
+			<h4>Codice del metodo <code>onMatrix()</code></h4>
+			<pre>
+<code>void onMatrix(int r, int c) {
+  if (2 * r >= sizeof(ROWS) && 2 * c < sizeof(COLS)) {
+    for (int i = 0; i < sizeof(COLS); i++) {
+      digitalWrite(ROWS[i], HIGH);
+    }
+    digitalWrite(COLS[c], LOW);
+  }
+  if (2 * c >= sizeof(COLS) && 2 * r < sizeof(ROWS)) {
+    for (int i = 0; i < sizeof(COLS); i++) {
+      digitalWrite(COLS[i], LOW);
+    }
+    digitalWrite(ROWS[r], HIGH);
+  }
+  if (2 * r < sizeof(ROWS) && 2 * c < sizeof(COLS)) {
+    digitalWrite(COLS[c], LOW);
+    digitalWrite(ROWS[c], HIGH);
+  }
+  if (2 * r >= sizeof(ROWS) && 2 * c >= sizeof(COLS)) {
+    for (int i = 0; i < sizeof(ROWS); i++) {
+      digitalWrite(ROWS[i], HIGH);
+    }
+    for (int i = 0; i < sizeof(COLS); i++) {
+      digitalWrite(COLS[i], LOW);
+    }
+  }
+}</code></pre>
+		</div>
+	</div>
+</article>
+
+
+<article class="odd-article">
+	<div class="container">
+		<div class="col-md-6">
+			<img class="col-md-12" src="../../assets/img/coding/arduino/relay.jpg">
+		</div>
+		<div class="col-md-5  col-md-offset-1">
+			<br>
+			<h2>Relay</h2>
+			<br>
+			<p>
+				Il relay visto dall'arduino ha il funzionamento di un led, anche se va collegato in maniera leggermente diversa.<br>
+				Il relay ha 3 pin di collegamento:
+			</p>
+			<ul>
+				<li>VIN: Colleare al +5V dell'arduino</li>
+				<li>GND: Collegare al GND dell'arduino (massa)</li>
+				<li>S: collegare ad un pin di uscita dell'arduino, senza resistenze. Questo comandera il relay.</li>
+			</ul>
+			<br>
+			<h4>Funzionamento del relay</h4>
+			<p>
+				Il relay ha altri 3 collegamenti (per alta tensione), questi si comportano come un comutatore.
+			</p>
+			<ul>
+				<li>NC: Quando il pin di entrata S è 0 viene comutato qui</li>
+				<li>COM: Collegare qui il cavo che si vuole comutare.</li>
+				<li>NO: Quando il pin di entrata S è 1 viene comutato qui</li>
+			</ul>
+		</div>
+	</div>
+</article>
+
+<article class="even-article">
+	<div class="container">
+		<div class="col-md-5">
+			<br>
+			<h2>Moving Sensor</h2>
+			<br>
+			<p>
+				Il sensore di movimento, dispone di 3 pin e due potenziometri. Quando avviene un movimento davanti alla
+				fotucellola del sensore viene messo ad 1 il pin DO per un lasso di tempo.
+			</p>
+			<h4>PIN</h4>
+			<ul>
+				<li>VIN: Collegare al +5V dell'arduino</li>
+				<li>DO: Data Output, uscita +5V o 0V</li>
+				<li>GND: Collegare al GND dell'arduino (massa)</li>
+			</ul>
+			<br>
+			<h4>Pontenziometri</h4>
+			<ul>
+				<li>R1: Regola la sensibilità del sensore</li>
+				<li>R2: Regola la durata del lasso di tempo</li>
+			</ul>
+		</div>
+		<div class="col-md-6 col-md-offset-1">
+			<img class="col-md-12" src="../../assets/img/coding/arduino/moving-sensor.png">
+		</div>
+	</div>
+</article>
+
+<footer>
+	<div class="container">
+		<div class="float-left">
+			&copy; 2018 - giulio bosco
+		</div>
+		<div class="float-right">
+			<a target="_blank" href="https://github.com/giuliobosco"><i class="fa fa-github fa-2x"></i></a>
+			<a target="_blank" href="https://www.facebook.com/profile.php?id=100009956442230"><i class="fa fa-facebook fa-2x"></i></a>
+			<a target="_blank" href="https://instagram.com/giulio___01"><i class="fa fa-instagram fa-2x"></i></a>
+			<a target="_blank" href="https://www.linkedin.com/in/giulio-bosco-91a728127/"><i class="fa fa-linkedin fa-2x"></i></a>
+		</div>
+	</div>
+</footer>
+
+</body>
+</html>

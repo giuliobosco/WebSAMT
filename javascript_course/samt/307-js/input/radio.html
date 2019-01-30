@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form>
+    <input type="radio" class="gender" name="gender" value="m" id="m" onchange="radio2(this);">Male<br>
+    <input type="radio" class="gender" name="gender" value="f" id="f" onchange="radio2(this);">Female<br>
+    <input type="radio" class="gender" name="gender" value="o" id="o" onchange="radio2(this);">Other
+ </form>
+
+<script>
+    function radio1(gender) {
+        if (document.getElementById(gender).checked){
+            window.alert(document.getElementById('m').value);
+        }
+    }
+</script>
+
+</body>
+</html>

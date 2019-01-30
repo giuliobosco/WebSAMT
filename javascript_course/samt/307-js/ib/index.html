@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Interactive Butterfly</title>
+	<link rel="stylesheet" type="text/css" href="../bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+<script src="../jquery.js"></script>
+
+<h1 class="text-center">Interactive Butterfly</h1>
+
+<div class="col-md-8 col-md-offset-2">
+	<h2>Insert string</h2>
+	<div class="col-md-2">
+		<input class="input-lg" type="text" id="text" onchange="checkString()">
+	</div>
+
+	<div class="col-md-1 col-md-offset-4">
+		<input class="input-lg" type="button" id="check" onfocus="run()" value="run" disabled="true">
+	</div>
+
+</div>
+
+<div class="col-md-8 col-md-offset-2 text-center">
+	<h2>Results:</h2>
+
+	<div class="col-md-4 col-md-offset-1 text-center">
+		<h4>Palindrome</h4>
+		<p id="palindrome"></p>
+	</div>
+
+	<div class="col-md-4 col-md-offset-2 text-center">
+		<h4>Farfallino</h4>
+		<p id="farfallino"></p>
+	</div>
+</div>
+
+<script src="ib.js"></script>
+</body>
+</html>

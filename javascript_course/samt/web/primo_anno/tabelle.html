@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Esercizio Tabelle</title>
+	<meta name="author" content="Giulio Bosco">
+	<meta name="keywords" content="Modulo, 101">
+	<meta name="description" content="primo orientamento in html">
+	<meta charset="utf-8">
+  	<meta name="date" content="12/10/2016">
+  	<!-- Firefox -->
+	<link rel="icon" type="image/png" href="../../../media/img/favicon.png">
+
+	<style>
+	table, th, td {
+    		border: 1px solid black;
+		text-align: left;
+		border-spacing: 0px;
+		margin-top: 100px;
+	}
+		
+	table#t01 {
+    		border: 1px solid black;
+		border-spacing: 0px;
+		height: 700px;
+	}
+	tr, td {
+		border: 1px solid black;
+	}
+		
+	tr.hei {
+		height:300px;
+	}
+		
+        td.wid {
+            width: 400px;
+            background-color: black;
+        }
+        
+        td.wids {
+            width: 50px;
+            background-color: red;
+        }
+        
+        .red {
+            background-color: red;
+        }
+        
+        .green {
+            background-color: green;
+        }
+        
+        .black {
+            background-color: black;
+        }
+        
+	table#t02 {
+		height: 500px;
+		width: 100%;
+	}
+
+	table#t02 tr:nth-child(odd) {
+		background-color: #000;
+	}
+
+	table#t03 {
+		height: 500px;
+		width: 100%;
+	}
+
+	table#t03 td:nth-child(even) {
+    		background-color: #000;
+	}
+
+	table#t04 tr:nth-child(odd) td:nth-child(even), table#t04 tr:nth-child(even) td:nth-child(odd) {
+		background-color: white;		
+	}
+
+	table#t04 {
+		background-color: black;
+		width: 100%;
+		height: 500px;	
+	}
+	</style>
+	
+	
+</head>
+<body>	
+
+	<table id="t01">
+		<tr class="hei">
+			<td class="wid"></td>
+			<td class="wids"></td>
+			<td class="wids"></td>
+			<td class="wids"></td>
+			<td class="wids"></td>
+		</tr>
+		<tr>
+			<td class="red"></td>
+			<td class="black"></td>
+			<td class="green"></td>
+			<td class="green"></td>
+			<td class="green"></td>
+		</tr>
+		<tr>
+			<td class="red"></td>
+			<td class="green"></td>
+			<td class="black"></td>
+			<td class="green"></td>
+			<td class="green"></td>
+		</tr>
+		<tr>
+			<td class="red"></td>
+			<td class="green"></td>
+			<td class="green"></td>
+			<td class="black"></td>
+			<td class="green"></td>
+		</tr>
+		<tr>
+			<td class="red"></td>
+			<td class="green"></td>
+			<td class="green"></td>
+			<td class="green"></td>
+			<td></td>
+		</tr>
+	</table>
+	<br>
+	<table id="t02">
+		<tr>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+		<tr>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+		<tr>
+			<td></td>
+		</tr>
+	</table>
+	<br>
+	<table id="t03">
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	<br>
+	<table id="t04">
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+</body>
+</html>

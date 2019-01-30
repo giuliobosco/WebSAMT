@@ -1,0 +1,27 @@
+[
+  {
+	"title": "Up and Down Led",
+	"description": "Creare un piccolo circuito composto da due bottoni, un potenziometro e tre led.	\nIl primo bottone deve essere collegato in pull up e deve accendere il led rosso collegato in pull down, mentre il secondo bottone deve essere collegato in pull down e deve accendere il led giallo collegato in pull up.\n Il potenziometro deve regolare la luminosità del led blu collegato ad un pin modulare(pwm).",
+	"breadbord": "../assets/img/samt/121-arduino/onOffLed-montaggio.jpg",
+	"schematic": "../assets/img/samt/121-arduino/onOffLed-eletric.jpg",
+	"code": "../assets/code/samt/121-arduino/onOffLed.ino"
+  },{
+  	"title": "On Off Led",
+  	"description": "Costruite un circuito con un led ed un bottone.\n  Il led si deve accendere quando il bottone viene premuto.\n  Il led si dee spegnere quando il bottone viene nuovamente premuto.\n  Se il bottone viene mantenuto premuto, il led deve rimanere nell'ultimo stato valido e non iniziare a lampeggiare.",
+  	"breadbord": "../assets/img/samt/121-arduino/upAndDown-montaggio.jpg",
+  	"schematic": "../assets/img/samt/121-arduino/upAndDown-eletric.jpg",
+  	"code": "../assets/code/samt/121-arduino/upAndDown.ino"
+  },{
+  	"title": "Semaforo",
+  	"description": "",
+  	"breadbord": "../assets/img/samt/121-arduino/semaforo-montaggio.jpg",
+  	"schematic": "../assets/img/samt/121-arduino/semaforo-eletric.jpg",
+  	"code": "../assets/code/samt/121-arduino/semaforo.ino"
+  },{
+  	"title": "Led Matrix",
+  	"description": "",
+  	"breadbord": "",
+  	"schematic": "../assets/img/samt/121-arduino/matrix-eletric.jpg",
+  	"code": "../assets/code/samt/121-arduino/matrix.ino"
+  }
+]

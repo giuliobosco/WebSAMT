@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script>
+    function writeAlert(id) {
+        alert(document.getElementById(id).value);
+    }
+
+    function writeAlert(id,text) {
+        alert(document.getElementById(id).value + text);
+    }
+</script>
+
+input text: <br>
+<input type="text" name="firstname" id="text">
+<button onclick="writeAlert('text')">Test</button>
+
+<br>
+
+input password: <br>
+<input type="password" id="password">
+<button onclick="writeAlert('password')">Test</button>
+
+<br>
+
+submit: <br>
+<form>
+    <input type="text" id="user">
+    <input type="text" id="name">
+    <input type="submit"
+           value="submit"
+           id="submit" onclick="writeAlert('user', document.getElementById('name').value)">
+    <input type="reset">
+</form>
+
+<br>
+
+Radio:<br>
+<form>
+    <input id="male" type="radio" onclick="writeAlert('male', ' - radio')" name="gender" value="male" checked> Male<br>
+    <input id="female" type="radio" onclick="writeAlert('female', ' - radio')" name="gender" value="female"> Female<br>
+    <input id="other" type="radio" onclick="writeAlert('other', ' - radio')" name="gender" value="other"> Other
+</form>
+
+<br>
+
+Checkbox:<br>
+<form>
+    <input id="bike" onclick="writeAlert('bike', ' - checkbox')" type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
+    <input id="car" onclick="writeAlert('car', ' - checkbox')" type="checkbox" name="vehicle2" value="Car"> I have a car
+</form>
+
+<br>
+
+input button:<br>
+<input type="button" onclick="alert('Hello World!')" value="Click Me!">
+
+<br>
+
+color:<br>
+<form>
+    Select your favorite color:
+    <input id="color" type="color" name="favcolor">
+    <input type="button" onclick="writeAlert('color', ' - color')" value="Test color">
+</form>
+
+<br>
+
+<form>
+    Birthday:
+    <input id="date" type="date" name="bday">
+    <input type="button" onclick="writeAlert('date', ' - date')" value="Test birtday">
+</form>
+
+<br>
+
+<form>
+    Birthday (date and time):
+    <input id="datetime" type="datetime-local" name="bdaytime">
+    <input type="button" onclick="writeAlert('datetime', ' - birtday (date time)')" value="Test Birtday (datetime)">
+</form>
+
+<br>
+
+<form>
+    E-mail:
+    <input id="email" onchange="writeAlert('email', ' - email')" type="email" name="email">
+</form>
+
+<br>
+
+<form>
+    Birthday (month and year):
+    <input id="yearmonth" onchange="writeAlert('yearmonth', ' - yearmonth')" type="month" name="bdaymonth">
+
+</form>
+
+<br>
+
+<form>
+    Quantity (between 1 and 5):
+    <input id="number" onchange="writeAlert('number', ' - Number')" type="number" name="quantity" min="1" max="5">
+</form>
+
+<br>
+
+<form>
+    Range beetwin 0 10:
+    <input id="range" onchange="writeAlert('range', ' - range')" type="range" name="points" min="0" max="10">
+</form>
+
+<br>
+
+<form>
+    Tel:
+    <input id="tel" onchange="writeAlert('tel', ' - tel')" type="tel" name="usrtel">
+</form>
+
+<br>
+
+<form>
+    Select a time:
+    <input id="time" onchange="writeAlert('time', ' - time')" type="time" name="usr_time">
+</form>
+
+<br>
+
+<form>
+    Add your homepage:
+    <input id="url" onchange="writeAlert('url', ' - url')" type="url" name="homepage">
+</form>
+
+<br>
+
+<form>
+    Select file:
+    <input id="file" onchange="writeAlert('file', ' - file')" type="file" name="file">
+</form>
+</body>
+</html>

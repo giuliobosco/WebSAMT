@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iteractive Painting String</title>
+    <link rel="stylesheet" type="text/css" href="../bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+<script src="../jquery.js"></script>
+
+<h1 class="text-center">Interactive Painting String</h1>
+
+<br><br><br>
+
+<div class="color col-md-4 col-md-offset-1">
+    <h2>Color options</h2>
+    <h4>How much would you want to increment the value? </h4>
+    <input class="input-lg" type="number" value="5" id="increment" name="increment" onchange="changeIncrement()">
+
+    <br><br>
+
+    <h4>Wich value would you want to increment?</h4>
+
+    <input class="input-lg" type="button" id="r" name="r" value="Red" onclick="addRed(colorIncrement)">
+    <input class="input-lg" type="button" id="g" name="g" value="Green" onclick="addGreen(colorIncrement)">
+    <input class="input-lg" type="button" id="b" name="b" value="Blue" onclick="addBlue(colorIncrement)">
+
+    <br>
+
+    <div class="text-center">
+        <h3>Your color is: <span id="color">#000000</span></h3>
+    </div>
+</div>
+
+<div class="string col-md-4 col-md-offset-2">
+    <h2>String to rewrite</h2>
+
+    <input class="no-margin col-md-8 input-lg" type="text" id="s" name="s" onchange="checkString()">
+    <input class="no-margin col-md-4 input-lg" type="button" id="submit" name="submit" value="submit" onclick="checkString()">
+
+    <br><br><br>
+
+    <div id="text" style="display: none">
+        <h4>UPPER CASE STRING</h4>
+        <p id="upper-case"></p>
+        <h4>minusclesnospaces</h4>
+        <p id="no-spaces"></p>
+        <h4>With Colors</h4>
+        <p id="with-colors"></p>
+    </div>
+    <div id="help">
+        <h4>How to use</h4>
+        <p>
+            Insert a String in the text box above.<br>
+            You can't insert Numbers.
+        </p>
+    </div>
+</div>
+
+<div class="back-home">
+    <a href="../">back home</a>
+</div>
+
+
+<script src="ips.js"></script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="w3schools">
+    <meta name="date" content="03.02.18">
+    <meta name="keywords" content="javaxript, html, css">
+    <meta name="description" content="test 1 17/18, interactive input with type string, number anda date">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .row::after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+        [class*="col-"] {
+            float: left;
+            padding: 15px;
+        }
+        html {
+            font-family: "Lucida Sans", sans-serif;
+        }
+        .header {
+            background-color: #9933cc;
+            color: #ffffff;
+            padding: 15px;
+        }
+        .menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        .menu li {
+            padding: 8px;
+            margin-bottom: 7px;
+            background-color: #33b5e5;
+            color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+        .menu li:hover {
+            background-color: #0099cc;
+        }
+        .aside {
+            background-color: #33b5e5;
+            padding: 15px;
+            color: #ffffff;
+            text-align: center;
+            font-size: 14px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+        .footer {
+            background-color: #0099cc;
+            color: #ffffff;
+            text-align: center;
+            font-size: 12px;
+            padding: 15px;
+        }
+        /* For desktop: */
+        .col-1 {width: 8.33%;}
+        .col-2 {width: 16.66%;}
+        .col-3 {width: 25%;}
+        .col-4 {width: 33.33%;}
+        .col-5 {width: 41.66%;}
+        .col-6 {width: 50%;}
+        .col-7 {width: 58.33%;}
+        .col-8 {width: 66.66%;}
+        .col-9 {width: 75%;}
+        .col-10 {width: 83.33%;}
+        .col-11 {width: 91.66%;}
+        .col-12 {width: 100%;}
+
+        @media only screen and (max-width: 768px) {
+            /* For mobile phones: */
+            [class*="col-"] {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+<script>
+	function isPalindrome(string) {
+		var is = true;
+
+		for (i = 0; i <= string.length - 1; i++){
+			if(string.charAt(i) != string.charAt(string.length - 1 - i)){
+				return false;
+				//i = string.length;
+			}
+		}
+
+		return true;
+	}
+	
+	function vowelCounter(x) {
+        var counter = 0;
+		for (i = 0; i < x.length; i++) {
+            if (x.charAt(i) == 'a' || x.charAt(i) == 'e' || x.charAt(i) == 'i' || x.charAt(i) == 'o' || x.charAt(i) == 'u') counter++;
+        }
+        return counter;
+	}
+	
+	function sepcialCarsCounter(x) {
+        var counter = 0;
+        for (i = 0; i < x.length; i++) {
+        	if (x.charAt(i) == ' ' || x.charAt(i) == '.' || x.charAt(i) == ',') counter++;
+        }
+        return counter;
+	}
+	
+	function consolanCounter(x) {
+        return x.length - vowelCounter(x) - sepcialCarsCounter(x);
+	}
+    
+    function palindromo(x) {
+        document.getElementById('orig').innerHTML = x;
+
+        var f1 = x.toLowerCase().replace(/ /g, "");
+        document.getElementById('f1').innerHTML = f1;
+
+        var f2 = document.getElementById('f2');
+        f2.innerHTML = x;
+        
+	    var f3 = document.getElementById('f3');
+	    f3.innerHTML = "";
+        if (isPalindrome(x)) {
+            f2.style.color = 'white';
+            f2.style.backgroundColor = 'blue';
+        } else {
+            f2.style.color = 'red';
+            f2.style.backgroundColor = 'white';
+            
+            f3.innerHTML = "vocali: " + vowelCounter(x) + " consonanti: " + consolanCounter(x) + " caratteri speciali: " + sepcialCarsCounter(x);
+        }
+    }
+</script>
+
+<script>
+	var fatti = 0;
+	var totali = 0;
+	var exp = 1;
+	var nota = calcolaNota();
+
+	var last1 = 0;
+	var totlast1 = 0;
+	var last2 = 0;
+	var totlast2 = 0;
+	
+	function calcolaNota() {
+        return Math.pow((fatti/totali), exp) * 5 + 1;
+	}
+	
+	function check(x) {
+		totlast2 = totlast1;
+		totlast1 = totali;
+		
+		fatti = document.getElementById('pfatti').value;
+		totali = document.getElementById('ptotali').value;
+		
+		exp = x;
+		console.log(totali);
+		if (fatti >= 0 && totali >= 0 && totali > fatti) {
+			last2 = last1;
+			last1 = nota;
+			
+			nota = calcolaNota();
+			var color;
+			
+			if (nota < 3) {
+				color = "red";
+				document.getElementById('exp-sel').style.display = "block";
+			} else if (nota < 4) {
+				color = "orange";
+			} else {
+				color = "green";
+			}
+			
+            //document.getElementsByClassName('colored').style.color = color;
+            document.getElementById('fatti').innerHTML = fatti;
+            document.getElementById('totali').innerHTML = totali;
+            document.getElementById('exp').innerHTML = exp;
+            document.getElementById('nota').innerHTML = nota;
+            if (totali == totlast1 && totali == totlast2) {
+            	document.getElementById('notao').innerHTML = last1;
+            	document.getElementById('notaor').innerHTML = last2;
+            } else if (totali == totlast1) {
+            	document.getElementById('notao').innerHTML = last1;
+            	document.getElementById('notaor').innerHTML = "xx";
+            } else {
+            	document.getElementById('notao').innerHTML = "xx";
+            	document.getElementById('notaor').innerHTML = "xx";
+            }
+            
+        }
+	}
+</script>
+
+<div class="header">
+    <h1>Test 1 17/18, Nome Cognome Classe</h1>
+</div>
+
+<div class="row">
+
+    <div class="col-3 menu">
+        <ul>
+            <li onclick="function f() { document.getElementById('palindromo-box').style.display = 'block'; document.getElementById('nota-box').style.display = 'none'; }; f();">Palindromo</li>
+            <li onclick="function f() { document.getElementById('nota-box').style.display = 'block'; document.getElementById('palindromo-box').style.display = 'none'; }; f();">Calcola nota</li>
+        </ul>
+    </div>
+
+    <div class="col-6">
+        <div id="palindromo-box">
+            <h1>Palindromo</h1>
+            
+            <input id="pal" type="text" placeholder="palindrom text" onchange="palindromo(this.value);">
+            
+            <p id="orig"></p>
+            <p><span id="f1" style="color: yellow; background-color: black"></span></p>
+            <p><span id="f2"></span></p>
+            <p><span id="f3"></span></p>
+
+        </div>
+        <div style="display: none;" id="nota-box">
+            <h1>Calcolo nota</h1>
+
+            <input type="number" id="pfatti" placeholder="punti fatti">
+            <input type="number" id="ptotali" placeholder="punti totali">
+    
+            <select style="display: none" id="exp-sel" onchange="check(this.value);">
+                <option value="0.1">0.1</option>
+                <option value="0.2">0.2</option>
+                <option value="0.3">0.3</option>
+                <option value="0.4">0.4</option>
+                <option value="0.5">0.5</option>
+                <option value="0.6">0.6</option>
+                <option value="0.7">0.7</option>
+                <option value="0.8">0.8</option>
+                <option value="0.9">0.9</option>
+                <option value="1" selected>1</option>
+            </select>
+            <input type="button" value="go" onclick="check(exp)">
+            
+            <p class="colored">Punti Fatti: <b id="fatti">xx</b>, Punti Totali: <b id="totali">xx</b></p>
+            <p class="colored">Valore EXP: <b id="exp">xx</b>, NOTA: <b id="nota">xx</b></p>
+            <p class="colored">NOTA old: <b id="notao">xx</b> NOTA older: <b id="notaor">xx</b></p>
+        </div>
+    
+</div>
+
+    <div class="col-3 right">
+        <div class="aside">
+            <h2>Menu</h2>
+            <p>vengono inseriti degli eventi per scegliere l'sercizio da visualizzare</p>
+            <h2>Container</h2>
+            <p>il contenuto cambia a dipendenza della scelta fatta nel menu, devono apparire gli input necessari per permettere la corretta interazione dell'utnete con lo script.</p>
+            <h2>Footer</h2>
+            <p>inserire la data odierna.</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p id="data">Inserisci qui la data odierna</p>
+</div>
+
+<script>
+    var date = new Date();
+    document.getElementById('data').innerHTML = date.getFullYear() + "-" + (1 + date.getMonth()) + "-" + date.getDay();
+</script>
+
+</body>
+</html>
+
+i

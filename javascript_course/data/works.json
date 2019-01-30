@@ -1,0 +1,29 @@
+[
+  {
+    "title": "reflect",
+    "author": "Giulio Bosco",
+    "url": "http://www.reflect-more.com/",
+    "description": "Clothes shop, with photo gallery of the products.",
+    "our": "The client gived us the design of the web site, we implemented it.",
+    "kind": "web development",
+    "image": "assets/img/works/reflect.jpg"
+  },
+  {
+    "title": "LvArT",
+    "author": "Giulio Bosco",
+    "url": "http://www.lvart.org/",
+    "description": "Photography web app, photo viewer.",
+    "our": "We have designed the graphical view with the client and implemented the web app.",
+    "kind": "web development",
+    "image": "assets/img/works/lvart.jpg"
+  },
+  {
+    "title": "CASSI",
+    "author": "Giulio Bosco (only translation",
+    "url": "http://www.lvart.org/",
+    "description": "Photography web app, photo viewer.",
+    "our": "We have designed the graphical view with the client and implemented the web app.",
+    "kind": "web development",
+    "image": "assets/img/works/cassi.jpg"
+  }
+]

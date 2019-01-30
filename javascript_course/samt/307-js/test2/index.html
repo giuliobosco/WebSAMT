@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="cities of the world">
+	<meta name="keywords" content="world cities">
+	<meta name="author" content="Giulio Bosco">
+	<meta name="date" content="27/03/2018">
+	<meta charset="utf-8">
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		
+		.row::after {
+			content: "";
+			clear: both;
+			display: table;
+		}
+		
+		[class*="col-"] {
+			float: left;
+			padding: 15px;
+		}
+		
+		html {
+			font-family: "Lucida Sans", sans-serif;
+		}
+		
+		header {
+			background-color: #9933cc;
+			color: #ffffff;
+			padding: 15px;
+		}
+		
+		.menu ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+		
+		.menu li {
+			padding: 8px;
+			margin-bottom: 7px;
+			background-color: #33b5e5;
+			color: #ffffff;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+		}
+		
+		.menu li:hover {
+			background-color: #0099cc;
+		}
+		
+		aside {
+			background-color: #33b5e5;
+			padding: 15px;
+			color: #ffffff;
+			text-align: center;
+			font-size: 14px;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+		}
+		
+		footer {
+			background-color: #0099cc;
+			color: #ffffff;
+			text-align: center;
+			font-size: 12px;
+			padding: 15px;
+		}
+		
+		span {
+			position: absolute;
+			padding-right: 40px;
+			right: 0px;
+		}
+		
+		/* For mobile phones: */
+		[class*="col-"] {
+			width: 100%;
+		}
+		
+		.col-6 p {
+			background: rgba(80, 80, 80, 0.5);
+			color: white;
+		}
+		
+		.col-6 {
+			background: url(../../../assets/img/samt/307-js/test2/citybw.jpg);
+			background-size: auto auto;
+			margin-top: 15px;
+		}
+		
+		@media only screen and (min-width: 768px) {
+			/* For desktop: */
+			.col-1 {
+				width: 8.33%;
+			}
+			
+			.col-2 {
+				width: 16.66%;
+			}
+			
+			.col-3 {
+				width: 25%;
+			}
+			
+			.col-4 {
+				width: 33.33%;
+			}
+			
+			.col-5 {
+				width: 41.66%;
+			}
+			
+			.col-6 {
+				width: 50%;
+			}
+			
+			.col-7 {
+				width: 58.33%;
+			}
+			
+			.col-8 {
+				width: 66.66%;
+			}
+			
+			.col-9 {
+				width: 75%;
+			}
+			
+			.col-10 {
+				width: 83.33%;
+			}
+			
+			.col-11 {
+				width: 91.66%;
+			}
+			
+			.col-12 {
+				width: 100%;
+			}
+		}
+	</style>
+	
+	<script src="../../../lib/js/jquery.js"></script>
+	<!-- Clock Manager -->
+	<script>
+		
+		/**
+		 * Fuso orario parigi.
+		 */
+		const parigi = 0;
+		/**
+		 * Fuso orario Tokyo.
+		 */
+		const tokyo = +8;
+		/**
+		 * Fuso orario Cairo.
+		 */
+		const cairo = +1;
+		
+		/**
+		 *  Fuso orario usato.
+		 */
+		var currentCity = new Date().getTimezoneOffset() -1;
+		/**
+		 * Indicatore per scrivere data o ora.
+		 * Se questa variabile è true verra scritta nell'header l'ora. Mentre se è false la data.
+		 * @type {Boolean}
+		 */
+		var displaTime = new Boolean(true);
+		
+		/**
+		 * Crea l'oggetto che conterra l'orologio o la data nell'header.
+		 */
+		function createClock() {
+			$('<span>').attr('id','clock')
+				.appendTo('#title');
+			printClock();
+			$('#clockManager').text('Hide Clock').attr('onclick','changeClock()');
+		}
+		
+		/**
+		 * Inverte orologio e data.
+		 */
+		function changeClock() {
+			displaTime = !displaTime;
+			printClock();
+			if (displaTime) {
+				$('#clockManager').text('Hide Clock');
+			} else {
+				$('#clockManager').text('Show Clock');
+			}
+		}
+		
+		/**
+		 * Scrive nell'oggetto per l'orologio e la data.
+		 */
+		function printClock() {
+			var date = calcTime(currentCity);
+			var display = "";
+			if (displaTime) {
+				display = (date.getHours()<10?'0'+date.getHours():date.getHours())
+					+ ':'
+					+ (date.getMinutes()<10?'0'+date.getMinutes():date.getMinutes());
+			} else {
+				const dayNames = ['Domenica','Lunedi','Martedi', 'Mercoledi','Giovedi','Venerdi','Sabato'];
+				const monthNames = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno",
+					"Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"
+				];
+				display = dayNames[date.getDay()] + ' ' + date.getDate() + ' ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
+			}
+			$('#clock').text(display);
+		}
+		
+		/**
+		 * Calcola la data e l'ora con il fuso orario
+		 * @param offset {float} Differenza di orario da Londra (GMT).
+		 * @returns {Date} Data con fuso orario.
+		 */
+		function calcTime(offset) {
+			var d = new Date();
+			var utc = d.getTime() - (d.getTimezoneOffset() * 60000);
+			var nd = new Date(utc + (3600000*offset));
+			return nd;
+		}
+		
+		/**
+		 * Clock per cambiare l'ora o la data nell'header.
+		 * @type {number}
+		 */
+		var clock = setInterval(printClock(), 1000);
+	</script>
+	<!-- Cities Manager -->
+	<script>
+		var cities = ['Paris', 'Cairo', 'Tokyo', 'Buenos Aires',''];
+		
+		var timeZones = [-2, -1, +5, -7];
+		
+		var citiesDesc = [
+			'Paris (French pronunciation: ​[paʁi] (About this sound listen)) is the capital and most populous city in France, with an administrative-limits ' +
+			'area of 105 square kilometres (41 square miles) and an official population of 2,206,488 (2015). The city is a commune and department, ' +
+			'and the heart of the 12,012-square-kilometre (4,638-square-mile) Île-de-France region (colloquially known as the \'Paris Region\'), whose 2016' +
+			' population of 12,142,802 represented roughly 18 percent of the population of France. Since the 17th century, Paris has been one of Europe\'s ' +
+			'major centres of finance, commerce, fashion, science, and the arts. The Paris Region had a GDP of €681 billion (US$850 billion) in 2016, ' +
+			'accounting for 31 percent of the GDP of France. According to official estimates, in 2013-14 the Paris Region had the third-highest GDP' +
+			' in the world and the largest regional GDP in the EU.',
+			
+			'Tokyo (/ˈtoʊkioʊ/, Japanese: [toːkʲoː] (About this sound listen)), officially Tokyo Metropolis, is the capital city of Japan' +
+			'and one of its 47 prefectures. The Greater Tokyo Area is the most populous metropolitan area in the world. It is the seat of ' +
+			'the Emperor of Japan and the Japanese government. Tokyo is in the Kantō region on the southeastern side of the main island ' +
+			'Honshu and includes the Izu Islands and Ogasawara Islands. Formerly known as Edo, it has been the de facto seat of government ' +
+			'since 1603 when Shogun Tokugawa Ieyasu made the city his headquarters. It officially became the capital after Emperor Meiji ' +
+			'moved his seat to the city from the old capital of Kyoto in 1868; at that time Edo was renamed Tokyo. Tokyo Metropolis was ' +
+			'formed in 1943 from the merger of the former Tokyo Prefecture (東京府 Tōkyō-fu) and the city of Tokyo (東京市 Tōkyō-shi).',
+			
+			'Cairo (/ˈkaɪroʊ/ KYE-roh; Arabic: القاهرة‎ Al-Qāhirah, About this sound pronunciation (help·info)) is the capital city of Egypt.' +
+			'The city\'s metropolitan area is the largest in the Middle East and the Arab world, and the 15th-largest in the world, ' +
+			'and is associated with ancient Egypt, as the famous Giza pyramid complex and the ancient city of Memphis are located in its ' +
+			'geographical area. Located near the Nile Delta, modern Cairo was founded in 969 CE by the Fatimid dynasty, but the land ' +
+			'composing the present-day city was the site of ancient national capitals whose remnants remain visible in parts of Old Cairo. ' +
+			'Cairo has long been a center of the region\'s political and cultural life, and is titled "the city of a thousand minarets" for ' +
+			'its preponderance of Islamic architecture. Cairo is considered a World City with a "Beta +" classification according to GaWC.',
+			
+			'Buenos Aires (/ˌbweɪnəs ˈɛəriːz/ or /-ˈaɪrɪs/; Spanish pronunciation: [ˈbwenos ˈaiɾes]) is the capital and most populous city ' +
+			'of Argentina. The city is located on the western shore of the estuary of the Río de la Plata, on the South American continent\'s ' +
+			'southeastern coast. "Buenos Aires" can be translated as "fair winds" or "good airs", but the first one was the meaning intended ' +
+			'by the founders in the 16th century, by the use of the original name "Real de Nuestra Señora Santa María del Buen Ayre". ' +
+			'The Greater Buenos Aires conurbation, which also includes several Buenos Aires Province districts, constitutes the fourth-most ' +
+			'populous metropolitan area in the Americas, with a population of around 17 million.'
+		];
+		
+		var citiesArea = [
+			['2,845 km<sup>2</sup>','17,174.4 km<sup>2</sup>'],
+			['606 km<sup>2</sup>','17,267.6 km<sup>2</sup>'],
+			['2,187 km<sup>2</sup>','13,572 km<sup>2</sup>'],
+			['203 km<sup>2</sup>','4,758 km<sup>2</sup>']
+		];
+		
+		var citiesPopulation = [
+			['12,405,426','720/km<sup>2</sup>'],
+			['20,439,541','19,376/km<sup>2</sup>'],
+			['38,305,000','6,224.66/km<sup>2</sup>'],
+			['13,591,863','2,890,15']
+		];
+		
+		var citiesEtymology = [
+			'The name "Paris" is derived from its early inhabitants, the Celtic Parisii tribe. The city\'s name is not related to the ' +
+			'\t\tParis of Greek mythology. Paris is often referred to as The City of Light (La Ville Lumière), both because of its leading ' +
+			'\t\trole during the Age of Enlightenment, and more literally because Paris was one of the first European cities to adopt gas ' +
+			'\t\tstreet lighting. In the 1860s, the boulevards and streets of Paris were illuminated by 56,000 gas lamps. Since the late ' +
+			'\t\t19th century, Paris has also been known as Panam(e) (pronounced [panam]) in French slang.',
+			
+			'Egyptians often refer to Cairo as Maṣr (IPA: [mɑsˤɾ]; Egyptian Arabic: مَصر‎), the Egyptian Arabic name for Egypt itself, ' +
+			'\t\temphasizing the city\'s importance for the country.',
+			
+			'Tokyo was originally known as Edo (江戸), which means "estuary". Its name was changed to Tokyo ' +
+			'\t\t(東京 Tōkyō, 東 tō "east", and 京 kyō "capital") when it became the imperial capital with the arrival of Emperor Meiji in 1868,' +
+			'\t\tin line with the East Asian tradition of including the word capital (京) in the name of the capital city ' +
+			'\t\t(like Kyoto-京都, Beijing-北京 and Nanjing-南京).',
+			
+			'It is recorded under the archives of Aragonese that Catalan missionaries and Jesuits arriving in Cagliari (Sardinia) ' +
+			'\t\tunder the Spanish Crown, after its capture from the Pisans in 1324 established their headquarters on top of a ' +
+			'\t\thill that overlooked the city. The hill was known to them as Buen Ayre (or Bonaria in Sardinian language), as it was ' +
+			'\t\tfree of the foul smell prevalent in the old city (the castle area), which is adjacent to swampland.'
+		];
+		
+		function setCity(city) {
+			currentCity = timeZones[city];
+			printClock();
+			
+			$('.col-6').css('background','url(../../../assets/img/samt/307-js/test2/bg_' + cities[city].toLowerCase().replace(' ', '_') +'.jpg)');
+			
+			$('#area').html('Metropolis: ' + citiesArea[city][0] + '<br>Metro: ' + citiesArea[city][1]);
+			$('#population').html('Metro: ' + citiesPopulation[city][0] + '<br>Density: ' + citiesArea[city][1]);
+			$('#etimology').html(citiesEtymology[city]);
+			
+			$('#city').html(cities[city]);
+			$('#text').html(citiesDesc[city]);
+			
+			oldCity = city;
+		}
+		
+		var oldCity = 4;
+		
+		function previewCity(city) {
+			$('.col-6').css('background','url(../../../assets/img/samt/307-js/test2/bg_' + cities[city].toLowerCase().replace(' ', '_') +'.jpg)');
+		}
+		function leavePreviewCity() {
+			$('.col-6').css('background','url(../../../assets/img/samt/307-js/test2/bg_' + cities[oldCity].toLowerCase().replace(' ', '_') +'.jpg)');
+		}
+	</script>
+	
+</head>
+<body>
+
+<header>
+	<h1 id="title">TOWN</h1>
+</header>
+
+<div class="row">
+	
+	<div class="col-3 right">
+		<aside>
+			<h2>Area</h2>
+			<p id="area">In geography, statistics and archaeology, a settlement, locality or populated place is a community in
+				which people live.</p>
+			<h2>Population</h2>
+			<p id="population">In the field of geospatial predictive modeling, settlements are "a city, town, village ghost or other
+				agglomeration of buildings where people live and work.</p>
+			<h2>Etimology</h2>
+			<p id="etimology">A settlement conventionally includes its constructed facilities such as roads</p>
+		</aside>
+	</div>
+	
+	<div class="col-6">
+		<h1 id="city">The City</h1>
+		<p id="text">A city is a large and permanent human settlement. Although there is no agreement on how a city is
+			distinguished from a town in general English language meanings, many cities have a particular
+			administrative, legal, or historical status based on local law.
+			
+			Cities generally have complex systems for sanitation, utilities, land usage, housing, and transportation.
+			The concentration of development greatly facilitates interaction between people and businesses, sometimes
+			benefiting both parties in the process, but it also presents challenges to managing urban growth.
+			
+			A big city or metropolis usually has associated suburbs and exurbs. Such cities are usually associated with
+			metropolitan areas and urban areas, creating numerous business commuters traveling to urban centers for
+			employment. Once a city expands far enough to reach another city, this region can be deemed a conurbation or
+			megalopolis. Damascus is arguably the oldest city in the world. In terms of population, the largest city
+			proper is Shanghai, while the fastest-growing is Dubai.</p>
+	</div>
+	
+	
+	<div class="col-3 menu">
+		<ul>
+			<li onclick="setCity(0)" onmouseover="previewCity(0)" onmouseleave="leavePreviewCity()">Paris</li>
+			<li onclick="setCity(1)" onmouseover="previewCity(1)" onmouseleave="leavePreviewCity()">Cairo</li>
+			<li onclick="setCity(2)" onmouseover="previewCity(2)" onmouseleave="leavePreviewCity()">Tokyo</li>
+			<li onclick="setCity(3)" onmouseover="previewCity(3)" onmouseleave="leavePreviewCity()">Buenos Aires</li>
+			<script>$('<li>').attr('onclick','createClock()').attr('id','clockManager').text('Show Clock').appendTo('ul');</script>
+		</ul>
+	</div>
+</div>
+
+<footer>
+	<p>Copyright &copy; Giulio Bosco</p>
+</footer>
+
+
+
+</body>
+</html>
+

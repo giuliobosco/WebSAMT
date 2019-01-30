@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<!--
+	  -- Copyright 2018 Giulio Bosco (giuliobva@gmail.com)
+	  --
+	  -- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+	  -- documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+	  -- the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+	  -- and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+	  -- The above copyright notice and this permission notice shall be included in all copies or substantial portions
+	  -- of the Software.
+	  --
+	  -- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+	  -- TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+	  -- THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+	  -- CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+	  -- DEALINGS IN THE SOFTWARE.
+	  -->
+	
+	<!--
+	  -- project: <title project> (<git-repo>)
+	  -- description: <desciption>
+	  --
+	  -- author: Giulio Bosco (giuliobva@gmail.com)
+	  -- version: 1.0
+	  -- date: <date>
+	  --
+	  -- file: index.html
+	  -->
+	
+	<meta property="og:type" content="website">
+	<meta name="keywords" content="<keywords>">
+	<meta property="og:title" content="<title>">
+	<meta name="description" content="<description>">
+	<meta property="og:description" content="<descriptio>">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<!-- pages title -->
+	<title>title</title>
+	
+	<!-- stylesheet - CSS -->
+	<link rel="stylesheet" type="text/css" href="../../../lib/font/font-awesome.min.css">    <!-- special characters -->
+	<link rel="stylesheet" type="text/css" href="../../../lib/css/bootstrap.min.css">                 <!-- Bootstrap -->
+	
+	<!-- Scripts - JavaScript -->
+	<script src="../../../lib/js/jquery.js"></script>                                                 <!--- jQuery ---->
+	<script src="../../../lib/js/utility.js"></script>                                                <!--- Utility --->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<!-- AngularJS -->
+</head>
+<body>
+
+<script>
+	var users = [["root", "root"], ["rosso", "123qwe"]];
+	
+	$(document).ready(function () {
+		$('#passmask').slideToggle();
+	});
+	
+	var u = null;
+	var popup = null;
+	
+	function getUsers(index) {
+		$.ajax({
+			type: 'GET',
+			url: 'capital.xml',
+			dataType: 'xml',
+			success: function (data) {
+				XMLReader(data, index);
+			}
+			//success: XMLReader(data)
+		});
+	}
+	
+	function XMLReader(data, index) {
+		var cityName = $(data).find('CITIES')[index].getElementsByTagName('NAME')[0].innerHTML;
+		var cityDesc = data.getElementsByTagName('TOWN')[index].childNodes[0].nodeValue;
+		
+		var area = data.getElementsByTagName('AREA')[index].childNodes[0].nodeValue;
+		var population = data.getElementsByTagName('POPULATION')[index].childNodes[0].nodeValue;
+		var etimology = data.getElementsByTagName('ETYMOLOGY')[index].childNodes[0].nodeValue;
+		var bg = data.getElementsByTagName('BG')[index].childNodes[0].nodeValue;
+		
+		writer(cityName, cityDesc, area, population, etimology, bg);
+		oldCity = bg;
+	}
+	
+	function createPopup(title, content) {
+		if (popup != null) {
+			popup.close();
+			popup = null;
+		}
+		popup = window.open("", "_blank", "width=" + newW + ", height=" + newY);
+		popup.document.write(content);
+		popup.document.title = title;
+	}
+	
+	function passCheck(user) {
+		var pass = $('#pass').val();
+		if (users[user][1] == pass) {
+			alert('yep');
+		} else {
+			$('<div>')
+				.addClass('alert alert-danger')
+				.text('the password for the username: ' + users[user][0] + ' isn\'t correct!')
+				.css('margin-top','15px')
+				.appendTo('#passmask');
+		}
+	}
+	function userCheck(obj) {
+		for (i = 0; i < users.length; i++) {
+			var user = $('#user').val();
+			if (users[i][0] == user) {
+				
+				$('<h4>')
+					.html(user+'<small>\'s password:</small>')
+					.appendTo('#passmask');
+				$('<input>')
+					.attr('type','password')
+					.attr('name','pass')
+					.attr('id','pass')
+					.appendTo('#passmask');
+				$('<input>')
+					.attr('type','button')
+					.attr('onclick','passCheck(' + i + ')')
+					.val('login')
+					.appendTo('#passmask');
+				
+				$('#usermask').fadeToggle(500);
+				$('#passmask').delay(550).fadeToggle();
+				
+				i = users.length;
+			}
+			if (i == users.length - 1 && users[i][0] != user) {
+				$('.alert-danger').remove();
+				$('<div>')
+					.addClass('alert alert-danger')
+					.text('the username: '+user+' doesn\'t exists. Retry!')
+					.css('margin-top','15px')
+					.appendTo('#usermask');
+			}
+		}
+	}
+</script>
+
+<div class="col-md-6 col-md-offset-3">
+	<h1>login</h1>
+	
+	<div id="usermask">
+		<h4>username:</h4>
+		<input type="text" name="username" id="user">
+		<input type="button" value="login" onclick="userCheck(this)">
+	</div>
+	
+	<div id="passmask"></div>
+</div>
+
+</body>
+</html>

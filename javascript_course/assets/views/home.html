@@ -1,0 +1,203 @@
+<!--
+  -- Copyright 2018 Giulio Bosco (giuliobva@gmail.com)
+  --
+  -- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+  -- documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+  -- the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+  -- and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  -- The above copyright notice and this permission notice shall be included in all copies or substantial portions
+  -- of the Software.
+  --
+  -- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+  -- TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+  -- THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+  -- CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+  -- DEALINGS IN THE SOFTWARE.
+  -->
+
+<!--
+  -- project: <title project> (<git-repo>)
+  -- description: <desciption>
+  --
+  -- author: Giulio Bosco (giuliobva@gmail.com)
+  -- version: 1.0
+  -- date: <date>
+  --
+  -- file: index.html
+  -->
+<header>
+	<div class="container">
+		<div class="text-center centered">
+			<h1>bring your dreams to life</h1>
+		</div>
+		<div class="text-center centered-down">
+			<a class="mover" href="#first"><i style="color: white" class="fa fa-angle-down fa-4x"></i></a>
+		</div>
+	</div>
+</header>
+
+<article id="first" class="odd-article web">
+	<div class="container">
+		<div class="col-md-6">
+			<img class="col-md-12" src="assets/img/mac.png">
+		</div>
+		<div class="col-md-5  col-md-offset-1">
+			<br><br>
+			<h2>web development</h2>
+			<br>
+			<p>
+				Sviluppo di siti WEB, siti statici (HTML5 &amp; CSS3) e dinamici (JavaScript & PHP). <br>
+				Oltre a JS vengono utilizzati i maggiori Framework, jQuery, AngularJS.
+			</p>
+			
+			<br><br>
+			
+			<div class="col-md-12 text-right more">
+				<a href="web/index.html">more</a>
+			</div>
+		</div>
+	</div>
+</article>
+
+<article class="even-article coding">
+	<div class="container">
+		<div class="col-md-5">
+			<br class="no-mobile"><br class="no-mobile">
+			<h2>coding</h2>
+			<br>
+			<p>
+				Programmazione di applicazioni per linea di comando e con interfaccia grafica. I linguaggi utilizzati
+				sono Java e C&num;.
+			</p>
+			
+			<p>
+				Oltre ad applicazioni sviluppo di circuiti e sistemi di controllo con Arduino.
+			</p>
+			<br><br>
+			<div class="col-md-12 text-right more">
+				<a href="coding/index.html">more</a>
+			</div>
+		</div>
+		<div class="col-md-6 col-md-offset-1">
+			<img class="col-md-12" src="assets/img/coding.png">
+		</div>
+	</div>
+</article>
+
+<article class="odd-article coding">
+	<div class="container">
+		<div class="col-md-6">
+			<img class="col-md-12" src="assets/img/systems.png">
+		</div>
+		<div class="col-md-5  col-md-offset-1">
+			<br>
+			<h2>it management</h2>
+			<br>
+			<p>
+				Installazione, configurazione e mantenimento di server (Windows Server e UNIX/Linux) e reti (CISCO).
+			</p>
+			
+			<br><br>
+			
+			<div class="col-md-12 text-right more">
+				<a href="systems/index.html">more</a>
+			</div>
+		</div>
+	</div>
+</article>
+
+<article class="works">
+	<div class="text-center">
+		<h2>works</h2>
+		<div class="row">
+			<div class="item col-md-3" ng-repeat="work in works">
+				<a href="#/work/{{$index}}">
+					<img class="image" ng-src="{{work.image}}">
+					<div class="middle">
+						<div class="text">{{work.title}}<br>{{work.kind}}</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</article>
+
+<article id="contacts">
+	<div class="container">
+		<div class="col-md-12 text-center">
+		</div>
+		<div class="col-md-6">
+			<h2>social</h2>
+			<div class="row">
+				<div class="col-md-1 ">
+					<a target="_blank" href="https://github.com/giuliobosco"><i class="fa fa-github fa-2x"></i></a>
+				</div>
+				<div class="col-md-11">
+					<a target="_blank" href="https://github.com/giuliobosco">GitHub - @giuliobosco</a>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-1">
+					<a target="_blank" href="https://instagram.com/giulio___01"><i class="fa fa-instagram fa-2x"></i></a>
+				</div>
+				<div class="col-md-11">
+					<a target="_blank" href="https://instagram.com/giulio___01">instagram - @giulio___01</a>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-1">
+					<a target="_blank" href="https://www.facebook.com/profile.php?id=100009956442230"> <i
+							class="fa fa-facebook fa-2x"></i></a>
+				</div>
+				<div class="col-md-11">
+					<a target="_blank" href="https://www.facebook.com/profile.php?id=100009956442230">FaceBook - Giulio Bosco</a>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-1">
+					<a target="_blank" href="https://www.linkedin.com/in/giulio-bosco-91a728127/"><i
+							class="fa fa-linkedin fa-2x"></i></a>
+				</div>
+				<div class="col-md-11">
+					<a target="_blank" href="https://www.linkedin.com/in/giulio-bosco-91a728127/">Linkedin - Giulio Bosco</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<h2>contacts</h2>
+			<form name="sentMessage" id="contactForm" novalidate>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<input type="text" id="name" class="form-control" placeholder="Nome" required="required">
+							<p class="help-block text-danger"></p>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<input type="email" id="email" class="form-control" placeholder="Email" required="required">
+							<p class="help-block text-danger"></p>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<textarea name="message" id="message" class="form-control" rows="4" placeholder="Messaggio"
+					          required></textarea>
+					<p class="help-block text-danger"></p>
+				</div>
+				<div id="success"></div>
+				<button type="submit" class="btn btn-default">Invia Messaggio</button>
+			</form>
+		</div>
+	</div>
+</article>
+
+<!-- Contacts Scripts -->
+<script src="../../lib/js/jqBootstrapValidation.js"></script>
+<script src="../../lib/js/contact_me.js"></script>
+
+<!-- View configuration -->
+<script src="../../assets/js/configure.js"></script>

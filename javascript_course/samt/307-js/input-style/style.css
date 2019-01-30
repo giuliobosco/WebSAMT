@@ -1,0 +1,28 @@
+.buttons {
+	margin-top: 100px;
+}
+
+.button {
+	border-radius: 20px;
+	border-color: #7fff7f;
+	background-color: #1fff2f;
+}
+
+.button:hover {
+	border-color: #7fff7f;
+	background-color: #1fff2f;
+	padding: 4px 8px;
+}
+
+.text {
+	border-radius: 20px;
+	padding: 0 10px;
+}
+
+.red {
+	color: red;
+}
+
+.green {
+	color: green;
+}

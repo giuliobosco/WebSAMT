@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<!--
+	  -- Copyright 2018 Giulio Bosco (giuliobva@gmail.com)
+	  --
+	  -- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+	  -- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+	  --
+	  -- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+	  -->
+	
+	<!--
+	  -- project: gb-website
+	  -- description: Giulio Bosco's WebSite
+	  --
+	  -- author: Giulio Bosco (giuliobva@gmail.com)
+	  -- version: 1.0
+	  -- date: 10.04.2018
+	  --
+	  -- file: index.html
+	  -->
+	
+	<meta charset="UTF-8">
+	<title>Title</title>
+	
+	<!-- stylesheet - CSS -->
+	<link rel="stylesheet" type="text/css" href="../../../lib/font/font-awesome.min.css">    <!-- special characters -->
+	<link rel="stylesheet" type="text/css" href="../../../lib/css/bootstrap.min.css">        <!-- Bootstrap -->
+	
+	<!-- Stylesheet - HTML Internal Stylesheet -->
+	<style>
+		.button {
+			background-color: #1e7e34;
+			border: 13px #1c7430 solid;
+			border-radius: 10px;
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			-moz-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			-o-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			
+			padding: 20px;
+			font-size: 30px;
+		}
+	</style>
+	
+	<!-- Scripts - JavaScript -->
+	<script src="../../../lib/js/jquery.js"></script>                                        <!-- jQuery -->
+	<script src="../../../lib/js/utility.js"></script>                                       <!-- Utility -->
+</head>
+<body>
+
+<script>
+	const BUTTON_SIZE = 100;
+	var screenW = screen.width,
+		screenH = screen.height,
+		availW = screen.availWidth,
+		availH = screen.availHeight,
+		newW = availW / 4,
+		newY = availH / 4,
+		posX = (screenW - newW) / 2,
+		posY = (screenH - newY) / 2;
+	
+	console.log("SCHERMO: " + screenW + " " + screenH);
+	console.log("DISPONIBILE: " + availW + " " + availH);
+	console.log("NUOVO: " + newW + " " + newY);
+	console.log("POSIZIONE: " + posX + " " + posY);
+	
+	
+	//var bottone = document.createElement("a");
+	var $button = $('<a>');
+	//var body = document.getElementsByTagName("body")[0];
+	var $body = $('body').first();
+	$body.appendChild(bottone);
+	$button.width(BUTTON_SIZE);
+	//bottone.style.width = SIZE + "px";
+	$button.height(BUTTON_SIZE);
+	//bottone.style.height = SIZE + "px";
+	var buttonTop = ((window.innerWidth - BUTTON_SIZE) / 2);
+	var buttonLeft = ((window.innerHeight - BUTTON_SIZE) / 2);
+	console.log("FINESTRA: " + window.innerWidth + " " + window.innerHeight);
+	console.log("PULSANTE: " + buttonTop + " " + buttonLeft);
+	$button.css('left',buttonLeft + 'px');// = nX + "px";
+	$button.css('top',buttonTop + 'px');
+	//bottone.style.top = nY + "px";
+	//bottone.setAttribute("onclick", "showPopup()");
+	$button.attr('onclick','showPopup()');
+	
+	window.addEventListener("resize", movePopup);
+	
+	
+	var popup;
+	
+	function showPopup() {
+		if (popup != null) {
+			popup.close();
+			popup = null;
+		}
+		popup = window.open("", "_blank", "width=" + newW + ", height=" + newY);
+		popup.moveTo(posX, posY);
+		popup.document.write("<h1>Popup!</h1>");
+		popup.document.title = "finestra";
+		popup.onbeforeunload = function () {
+			popup = null;
+		};
+	}
+	
+	var lastWindowX = window.innerWidth;
+	var lastWindowY = window.innerHeight;
+	
+	function movePopup() {
+		var nX = ((window.innerWidth - BUTTON_SIZE) / 2);
+		var nY = ((window.innerHeight - BUTTON_SIZE) / 2);
+		var bottone = document.getElementsByTagName("a")[0];
+		console.log("FINESTRA: " + window.innerWidth + " " + window.innerHeight);
+		console.log("PULSANTE: " + nX + " " + nY);
+		bottone.style.left = nX + "px";
+		bottone.style.top = nY + "px";
+		
+		var currentX = window.innerWidth;
+		var currentY = window.innerHeight;
+		
+		if (popup != null) {
+			if (currentX > lastWindowX) {
+				console.log(lastWindowX - currentX);
+				popup.moveBy(lastWindowX - currentX, 0);
+			}
+			else if (currentX < lastWindowX) {
+				console.log(lastWindowX - currentX);
+				popup.moveBy(lastWindowX - currentX, 0);
+			}
+			
+			if (currentY > lastWindowY) {
+				console.log(lastWindowY - currentY);
+				popup.moveBy(0, lastWindowY - currentY);
+			}
+			else if (currentY < lastWindowY) {
+				console.log(lastWindowY - currentY);
+				popup.moveBy(0, lastWindowY - currentY);
+			}
+			lastWindowX = currentX;
+			lastWindowY = currentY;
+			
+			popup.document.getElementsByTagName("h1")[0].style.color = getRGB();
+		}
+	}
+</script>
+
+</body>
+</html>

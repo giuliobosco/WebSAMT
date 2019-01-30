@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<!--
+	  -- Copyright 2018 Giulio Bosco (giulio.bosco@samtrevano.ch)
+	  --
+	  -- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+	  -- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+	  --
+	  -- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+	  -->
+	
+	<!--
+	  -- project: Web Calculator
+	  -- description: Web Calculator whit standard and scentific calculator.
+	  --
+	  -- author: Giulio Bosco (giulio.bosco@samtrevano.ch)
+	  -- version: 1.0
+	  -- date: 17/03/2018
+	  --
+	  -- file: index.html
+	  -->
+	
+	<meta charset="UTF-8">
+	<title>Title</title>
+	
+	<!-- stylesheet - CSS -->
+	<link rel="stylesheet" type="text/css" href="../../../lib/font/font-awesome.min.css">    <!-- special characters -->
+	<link rel="stylesheet" type="text/css" href="../../../lib/css/bootstrap.min.css">        <!-- Bootstrap -->
+	
+	<!-- Internal Page StyleSheet - CSS -->
+	<style>
+		
+		#back-home {
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			color: black;
+		}
+		
+		#calculator {
+			position: absolute;
+			left: 50%;
+			-webkit-transform: translate(-50%);
+			-moz-transform: translate(-50%);
+			-ms-transform: translate(-50%);
+			-o-transform: translate(-50%);
+			transform: translate(-50%);
+			width: 50%;
+		}
+		
+		@media (max-width: 767px) {
+			#calculator {
+				width: 90%;
+			}
+		}
+		
+		.button {
+			background-color: #fff;
+			border: 2px solid #555555;
+			color: #000;
+			padding: 16px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			-webkit-transition-duration: 0.4s; /* Safari */
+			transition-duration: 0.4s;
+			cursor: pointer;
+			width: 97%;
+		}
+		
+		.button:hover {
+			background-color: #555;
+			color: #fff;
+		}
+		
+		.btn-container {
+			width: 25%;
+			margin: 0;
+			padding: 0;
+			float: left;
+		}
+		
+		input[type="text"] {
+			font-size: 40px;
+			width: 100%;
+			border: 2px solid #555;
+			text-align: right;
+		}
+		
+		.full-button {
+			width: 100%;
+		}
+	</style>
+	
+	<!-- Scripts - JavaScript -->
+	<script src="../../../lib/js/jquery.js"></script>                                        <!-- jQuery -->
+	<script src="../../../lib/js/utility.js"></script>                                       <!-- Utility -->
+	<script src="calculator.js"></script>                                                    <!-- Calculator Script -->
+	<script src="app.js"></script>                                                           <!-- Application Script -->
+</head>
+<body>
+<div id="calculator">
+	<div id="header" class="text-center">
+		<h1>JS Calculator</h1>
+	</div>
+	
+	<hr size="20px">
+	
+	<div id="display">
+		<input id="calcule-display" type="text" placeholder="your calculation "
+		       onchange="changeCalcule($('#calcule-display').val())">
+	</div>
+	
+	<hr>
+	
+	<div id="selector" class="text-center">
+		<form>
+			<input type="radio" name="select" value="Classic" onclick="selectClassic()" checked> Classic
+			<input type="radio" name="select" value="Scientific" style="margin-left: 50px" onclick="selectScientific()">
+			Scientific
+		</form>
+	</div>
+	
+	<hr>
+	
+	
+	<div id="keypad" class="">
+		<div class="full-button top-buttons">
+			<input class="button full-button" id="AC" type="button" onclick="AC()" value="AC">
+		</div>
+		<script>
+			var keys = [
+				['7', '8', '9', '+'],
+				['4', '5', '6', '-'],
+				['1', '2', '3', '*'],
+				['0', '.', '=', '/']
+			];
+			
+			for (i = 0; i < keys.length; i++) {
+				for (j = 0; j < keys[i].length; j++) {
+					var key = keys[i][j];
+					$('<div>').addClass('btn-container')
+						.html('<input type="button" name="b' + key + '" value="' + key + '" class="button" onclick="addFactor(\'' + key + '\')">')
+						.appendTo('#keypad');
+					/*$('<input>').attr('type','button')
+						.attr('value',keys[i][j])
+						.addClass('col-md-3 button')
+						.attr('name', 'b' + keys[i][j])
+						.attr('onclick', 'addFactor("'+keys[i][j]+'")')
+						.appendTo('#keypad');*/
+				}
+			}
+		</script>
+	</div>
+</div>
+
+<div id="back-home"><a class="fa fa-home fa-4x" href="../../index.html"></a></div>
+
+<script>
+</script>
+
+</body>
+</html>
