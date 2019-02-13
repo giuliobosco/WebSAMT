@@ -36,13 +36,13 @@ echo(strtolower($proverbio) . "<br>");
 
 // print even letters
 for ($i = 0; $i < strlen($proverbio); $i++) {
-	if ($i % 2 == 0) echo(substr($proverbio, $i, 1));
+	if ($i % 2 == 0) echo($proverbio[$i]);
 }
 echo("<br>");
 
 // print odd letters
 for ($i = 0; $i < strlen($proverbio); $i++) {
-	if ($i % 2 == 1) echo(substr($proverbio, $i, 1));
+	if ($i % 2 == 1) echo($proverbio[$i]);
 }
 echo("<br>");
 
@@ -77,7 +77,7 @@ function is_vowel(string $s):bool {
 
 $colors = "";
 for ($i = 0; $i < strlen($proverbio); $i++) {
-	$s = substr($proverbio, $i, 1);
+	$s = $proverbio[$i];
 	if (is_vowel($s)) {
 		$colors .= '<span style="color:red">';
 	} else {
@@ -91,7 +91,7 @@ echo("<br>");
 
 $reverse = "";
 for ($i = strlen($proverbio) - 1; $i >= 0; $i--) {
-	$reverse .= substr($proverbio, $i, 1);
+	$reverse .= $proverbio[$i];
 }
 echo($reverse);
 echo("<br>");
