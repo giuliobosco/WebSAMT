@@ -27,6 +27,17 @@
  * @version 1.0
  */
 
+/**
+ * Beautiful array printer.
+ *
+ * @param $array array Array to print.
+ */
+function pre($array) {
+	echo("<pre>");
+	print_r($array);
+	echo("</pre>");
+}
+
 // Array with numeric key
 $array = array("Value1", "Value2", "Value3");
 var_dump($array);
