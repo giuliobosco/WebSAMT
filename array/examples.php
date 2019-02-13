@@ -52,3 +52,10 @@ array_splice($array,2,1);
 array_splice($array,2,1,"replaced value");
 // remove value but do not reorder keys
 unset($array[2]);
+
+// create array with 3 strings
+$array = array("Hello", "World", "!");
+// implode the strings of the array in a single string
+$string = implode(" ", $array);
+// explode the string in an array by the spaces
+$array = explode(" ", $string);
