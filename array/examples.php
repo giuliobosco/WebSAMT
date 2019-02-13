@@ -70,3 +70,24 @@ $array = array("Hello", "World", "!");
 $string = implode(" ", $array);
 // explode the string in an array by the spaces
 $array = explode(" ", $string);
+
+// create array with values
+$array = array("b","c","a","d");
+// print array
+pre($array);
+// sort the array by the values
+sort($array);
+// print the array
+pre($array);
+
+// create array with keys and values
+$array = array("KB" => "b",
+	"KC" => "c",
+	"KA" => "a",
+	"KD" => "d");
+// print array
+pre($array);
+// sort the array by the keys
+ksort($array);
+// print array
+pre($array);
