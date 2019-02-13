@@ -47,7 +47,7 @@ $array = array("Key1"=>"Value1", "Key2"=>"Value2", "Key3"=>"Value3");
 var_dump($array);
 
 // array for test functions and add elements
-$array = $array(5);
+$array = array(5);
 $array[] = 7;
 $array[] = 44;
 var_dump($array);
