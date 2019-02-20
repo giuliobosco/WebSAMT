@@ -27,26 +27,26 @@
  * @version 1.0
  */
 
-$proverbio = "Campa cavallo che l'erba cresce.";
+$proverb = "Campa cavallo che l'erba cresce.";
 
 // all upper case
-echo(strtoupper($proverbio) . "<br>");
+echo(strtoupper($proverb) . "<br>");
 // all lower case
-echo(strtolower($proverbio) . "<br>");
+echo(strtolower($proverb) . "<br>");
 
 // print even letters
-for ($i = 0; $i < strlen($proverbio); $i++) {
-	if ($i % 2 == 0) echo($proverbio[$i]);
+for ($i = 0; $i < strlen($proverb); $i++) {
+	if ($i % 2 == 0) echo($proverb[$i]);
 }
 echo("<br>");
 
 // print odd letters
-for ($i = 0; $i < strlen($proverbio); $i++) {
-	if ($i % 2 == 1) echo($proverbio[$i]);
+for ($i = 0; $i < strlen($proverb); $i++) {
+	if ($i % 2 == 1) echo($proverb[$i]);
 }
 echo("<br>");
 
-$only_u = $proverbio;
+$only_u = $proverb;
 str_replace("a", "u", $only_u);
 str_replace("A", "u", $only_u);
 str_replace("e", "u", $only_u);
@@ -76,8 +76,8 @@ function is_vowel(string $s):bool {
 }
 
 $colors = "";
-for ($i = 0; $i < strlen($proverbio); $i++) {
-	$s = $proverbio[$i];
+for ($i = 0; $i < strlen($proverb); $i++) {
+	$s = $proverb[$i];
 	if (is_vowel($s)) {
 		$colors .= '<span style="color:red">';
 	} else {
@@ -90,8 +90,8 @@ echo($colors);
 echo("<br>");
 
 $reverse = "";
-for ($i = strlen($proverbio) - 1; $i >= 0; $i--) {
-	$reverse .= $proverbio[$i];
+for ($i = strlen($proverb) - 1; $i >= 0; $i--) {
+	$reverse .= $proverb[$i];
 }
 echo($reverse);
 echo("<br>");
