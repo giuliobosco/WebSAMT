@@ -29,13 +29,13 @@
 
 ?>
 <table style="border:1px solid black;border-collapse:collapse;">
-	<?php for ($i = 1; $i <= 10; $i++) { ?>
-	<tr>
-		<?php for ($j = 1; $j <= 10; $j++) { ?>
-		<td style="border:1px solid black;border-collapse:collapse;padding:5px">
-			<?php echo ($i * $j) ?>
-		</td>
-		<?php } ?>
-	</tr>
-	<?php } ?>
+	<?php for ($i = 1; $i <= 10; $i++) : ?>
+		<tr>
+			<?php for ($j = 1; $j <= 10; $j++) : ?>
+				<td style="border:1px solid black;border-collapse:collapse;padding:5px">
+					<?php echo($i * $j) ?>
+				</td>
+			<?php endfor; ?>
+		</tr>
+	<?php endfor; ?>
 </table>
