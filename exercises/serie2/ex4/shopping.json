@@ -1,0 +1,14 @@
+[
+  {
+	"id": 12,
+	"name": "patate",
+	"type": "alimentari",
+	"quantity": 1
+  },
+  {
+	"id": 13,
+	"name": "cavoli",
+	"type": "alimentari",
+	"quantity": 4
+  }
+]
