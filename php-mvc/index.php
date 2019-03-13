@@ -26,8 +26,14 @@
  * Main app file.
  *
  * @author giuliobosco
- * @version 1.0
+ * @version 1.0.1 (2019-03-13 - 2019-03-2019)
  */
 
 // load app configuration
 require "application/config/config.php";
+
+// load application
+require "application/application.php";
+
+// create new application
+$app = new Application();
