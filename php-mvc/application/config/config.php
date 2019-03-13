@@ -23,11 +23,8 @@
  * THE SOFTWARE.
  */
 /**
- * Main app file.
- *
+ * PHP-MVC configuration.
+ * 
  * @author giuliobosco
  * @version 1.0
  */
-
-// load app configuration
-require "application/config/config.php";
