@@ -29,7 +29,7 @@ namespace Controllers;
  * PHP MVC Controller base.
  *
  * @author giuliobosco
- * @version 1.0.1 (2019-03-13 - 2019-03-13)
+ * @version 1.0.2 (2019-03-13 - 2019-03-13)
  */
 class Controller {
 
@@ -50,8 +50,21 @@ class Controller {
 	/**
 	 * Controller index.
 	 */
-	public function index() {
+	public function index():void {
 		echo ("<h1>it works!</h1>");
+	}
 
+	/**
+	 * Require the header.
+	 */
+	public function requireHeader():void {
+		require "application/views/_template/header.html";
+	}
+
+	/**
+	 * Require the footer.
+	 */
+	public function requireFooter():void {
+		require "application/views/_template/footer.html";
 	}
 }
