@@ -26,14 +26,12 @@
  * PHP MVC Home controller.
  *
  * @author giuliobosco
- * @version 1.0 (2019-03-13 - 2019-03-13)
+ * @version 1.0.1 (2019-03-13 - 2019-03-20)
  */
-
-namespace Controllers;
 
 require "controller.php";
 
-class Home extends Controller {
+class home extends Controller {
 
 	/**
 	 * Home constructor.

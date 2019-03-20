@@ -23,13 +23,11 @@
  * THE SOFTWARE.
  */
 
-namespace Controllers;
-
 /**
  * PHP MVC Controller base.
  *
  * @author giuliobosco
- * @version 1.0.2 (2019-03-13 - 2019-03-13)
+ * @version 1.0.3 (2019-03-13 - 2019-03-20)
  */
 class Controller {
 
