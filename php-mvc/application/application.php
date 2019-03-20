@@ -27,7 +27,7 @@
  * PHP MVC Application.
  *
  * @author giuliobosco
- * @version 1.0.1 (2019-03-13 - 2019-03-20)
+ * @version 1.0.2 (2019-03-13 - 2019-03-20)
  */
 class Application {
 
@@ -42,12 +42,12 @@ class Application {
 	private $url_action;
 
 	/**
-	 * @var array Paramters for the action.
+	 * @var array Parameters for the action.
 	 */
 	private $url_parameters;
 
 	/**
-	 * @var \Controllers\Controller Controller of the url.
+	 * @var Controller Controller of the url.
 	 */
 	private $controller;
 
@@ -60,11 +60,11 @@ class Application {
 			require './application/controllers/' . $this->url_controller . '.php';
 
 			// create the controller
-			$this->controller = new $this->url_controller();
+			$this->controller = new $this->url_controller($this->url_parameters);
 
 			if (method_exists($this->controller, $this->url_action)) {
 				// check if the action exists
-				$this->controller->$this->url_action($this->url_parameters);
+				$this->controller->{$this->url_action}();
 			} else {
 				// if the action doesn't exists open the index of the controller
 				$this->controller->index();
