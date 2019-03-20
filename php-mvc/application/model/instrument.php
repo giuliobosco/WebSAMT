@@ -25,9 +25,14 @@
 
 /**
  * @author giuliobosco
- * @version 1.0 (2019-03-20 - 2019-03-20)
+ * @version 1.0.1 (2019-03-20 - 2019-03-20)
  */
 class instrument {
+
+	/**
+	 * @var int Id of the instrument.
+	 */
+	private $id;
 
 	/**
 	 * @var string Name of the instrument.
@@ -52,16 +57,24 @@ class instrument {
 	/**
 	 * instrument constructor.
 	 *
+	 * @param int $id Id of the instrument.
 	 * @param string $name Name of the instrument.
 	 * @param string $model Model of the instrument.
 	 * @param string $type Type of the instrument.
 	 * @param float $price Price of the instrument.
 	 */
-	public function __construct(string $name, string $model, string $type, float $price) {
+	public function __construct(int $id, string $name, string $model, string $type, float $price) {
 		$this->name = $name;
 		$this->model = $model;
 		$this->type = $type;
 		$this->price = $price;
+	}
+
+	/**
+	 * @return int Id of the instrument.
+	 */
+	public function getId(): int {
+		return $this->id;
 	}
 
 	/**
