@@ -1,4 +1,5 @@
-<?php /*
+<?php
+/*
  * The MIT License
  *
  * Copyright 2018 giuliobosco.
@@ -21,41 +22,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 /**
- * PHP MVC Home controller.
- *
  * @author giuliobosco
- * @version 1.0.2 (2019-03-13 - 2019-03-20)
+ * @version 1.0
  */
 
-require "controller.php";
-
-class home extends Controller {
-
-	/**
-	 * Home constructor.
-	 * @param array $parameters Parameters of the controller.
-	 */
-	public function __construct(array $parameters) {
-		parent::__construct($parameters);
-	}
-
-	/**
-	 * Require the index of the home controller.
-	 */
-	public function index():void {
-		$this->requireHeader();
-		require "application/views/home/index.html";
-		$this->requireFooter();
-	}
-
-	/**
-	 * Test parameters.
-	 */
-	public function parameters():void {
-		$this->requireHeader();
-		require "application/views/home/parameters.php";
-		$this->requireFooter();
-	}
-}
+var_dump($this->parameters);
