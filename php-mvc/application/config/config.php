@@ -28,3 +28,5 @@
  * @author giuliobosco
  * @version 1.0
  */
+
+const INSTRUMENTS_CSV_FILE = "application/data/instruments.csv";
