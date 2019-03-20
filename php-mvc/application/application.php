@@ -27,7 +27,7 @@
  * PHP MVC Application.
  *
  * @author giuliobosco
- * @version 1.0.2 (2019-03-13 - 2019-03-20)
+ * @version 1.0.3 (2019-03-13 - 2019-03-20)
  */
 class Application {
 
@@ -70,8 +70,8 @@ class Application {
 				$this->controller->index();
 			}
 		} else {
-			require "../application/controllers/home.php";       // require the home controller
-			$home = new Home();                                  // create a new home controller
+			require "./application/controllers/home.php";       // require the home controller
+			$home = new Home(Array());                                  // create a new home controller
 			$home->index();                                      // open the index of the home
 		}
 	}
