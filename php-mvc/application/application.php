@@ -27,7 +27,7 @@
  * PHP MVC Application.
  *
  * @author giuliobosco
- * @version 1.0 (2019-03-13 - 2019-03-13)
+ * @version 1.0.1 (2019-03-13 - 2019-03-20)
  */
 class Application {
 
@@ -57,7 +57,7 @@ class Application {
 
 		if (file_exists('./application/controllers/' . $this->url_controller . '.php')) {
 			// check if the controller exists and require it
-			require './application/controllers/'. $this->url_controller . '.php';
+			require './application/controllers/' . $this->url_controller . '.php';
 
 			// create the controller
 			$this->controller = new $this->url_controller();
@@ -84,7 +84,7 @@ class Application {
 		if (isset($_GET['url'])) {
 			$url = rtrim($_GET['url'], '/');            // trim in between the '/'
 			$url = filter_var($url, FILTER_SANITIZE_URL); // sanitize url
-			$url = explode($url, '/');                   // expolode in arrays in between '/'
+			$url = explode('/', $url);                   // expolode in arrays in between '/'
 
 			if (count($url) > 1) {
 				// check if the url contains at least 2 elements
@@ -95,7 +95,7 @@ class Application {
 
 				// for each parameter copy in parameters array
 				for ($i = 2; $i < count($url); $i++) {
-					array_push($parameters,$url[$i]);
+					array_push($parameters, $url[$i]);
 				}
 
 				$this->url_parameters = $parameters;            // copy array in url_parameters
