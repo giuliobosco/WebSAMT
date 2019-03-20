@@ -25,9 +25,11 @@
 
 /**
  * @author giuliobosco
- * @version 1.0.1 (2019-03-20 - 2019-03-20)
+ * @version 1.0.2 (2019-03-20 - 2019-03-20)
  */
 class instrument {
+
+	public const CSV_SEPARATOR = ";";
 
 	/**
 	 * @var int Id of the instrument.
@@ -97,7 +99,7 @@ class instrument {
 
 	/**
 	 * Get the type of the instrument.
-	 * 
+	 *
 	 * @return string Type of the instrument.
 	 */
 	public function getType(): string {
@@ -111,5 +113,67 @@ class instrument {
 	 */
 	public function getPrice(): float {
 		return $this->price;
+	}
+
+	/**
+	 * Write the instrument to the CSV.
+	 */
+	public function writeToCsv(): void {
+		// create string for the csv.
+		$csv_line = $this->id;
+		$csv_line .= self::CSV_SEPARATOR . $this->name;
+		$csv_line .= self::CSV_SEPARATOR . $this->model;
+		$csv_line .= self::CSV_SEPARATOR . $this->type;
+		$csv_line .= self::CSV_SEPARATOR . $this->price;
+
+		// open file csv for write line
+		$csv_file = fopen(INSTRUMENTS_CSV_FILE, "w");
+
+		// write on csv
+		fputcsv($csv_file, array($csv_line));
+
+		// close file csv
+		fclose($csv_file);
+	}
+
+	/**
+	 * Get the instruments in the csv file.
+	 *
+	 * @return array Instruments.
+	 */
+	public static function getInstruments(): array {
+		// open csv file
+		$csv_file = fopen(INSTRUMENTS_CSV_FILE, "r");
+		// create array for csv data
+		$csv_data = array();
+
+		// read first line of csv (header line)
+		fgetcsv($csv_file);
+
+		// read all csv file lines
+		while (!feof($csv_file)) {
+			// read the line
+			$string = fgetcsv($csv_file)[0];
+			// explode string in array
+			$strings = explode(self::CSV_SEPARATOR, $string);
+			// create instrument from array
+			if (count($strings) > 4) {
+				$instrument = new instrument(
+					intval($strings[0]),
+					strval($strings[1]),
+					strval($strings[2]),
+					strval($strings[3]),
+					intval($strings[4])
+				);
+				// push instrument in data array
+				array_push($csv_data, $instrument);
+			}
+		}
+
+		// close csv file
+		fclose($csv_file);
+
+		// return csv data
+		return $csv_data;
 	}
 }
