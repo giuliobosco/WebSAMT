@@ -71,8 +71,8 @@ class Application {
 			}
 		} else {
 			require "./application/controllers/home.php";       // require the home controller
-			$home = new Home(Array());                                  // create a new home controller
-			$home->index();                                      // open the index of the home
+			$home = new Home(Array());                          // create a new home controller
+			$home->index();                                     // open the index of the home
 		}
 	}
 
@@ -84,7 +84,7 @@ class Application {
 		if (isset($_GET['url'])) {
 			$url = rtrim($_GET['url'], '/');            // trim in between the '/'
 			$url = filter_var($url, FILTER_SANITIZE_URL); // sanitize url
-			$url = explode('/', $url);                   // expolode in arrays in between '/'
+			$url = explode('/', $url);                 // expolode in arrays in between '/'
 
 			if (count($url) > 1) {
 				// check if the url contains at least 2 elements
