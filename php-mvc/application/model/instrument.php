@@ -25,7 +25,7 @@
 
 /**
  * @author giuliobosco
- * @version 1.0.2 (2019-03-20 - 2019-03-20)
+ * @version 1.0.3 (2019-03-20 - 2019-03-27)
  */
 class instrument {
 
@@ -66,6 +66,7 @@ class instrument {
 	 * @param float $price Price of the instrument.
 	 */
 	public function __construct(int $id, string $name, string $model, string $type, float $price) {
+		$this->id=$id;
 		$this->name = $name;
 		$this->model = $model;
 		$this->type = $type;
