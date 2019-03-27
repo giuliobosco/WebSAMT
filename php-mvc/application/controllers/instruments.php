@@ -27,7 +27,7 @@ require "controller.php";
 
 /**
  * @author giuliobosco
- * @version 1.0 (2019-03-20 - 2019-03-20)
+ * @version 1.0 (2019-03-20 - 2019-03-27)
  */
 class instruments extends Controller {
 
@@ -39,13 +39,17 @@ class instruments extends Controller {
 		parent::__construct($parameters);
 	}
 
+	public function req_instrument(): void {
+		require "application/model/instrument.php";
+	}
+
 	/**
 	 * Instruments index, instruments list.
 	 */
 	public function index(): void {
 		$this->requireHeader();
 
-		require "application/model/instrument.php";
+		$this->req_instrument();
 
 		$instruments = instrument::getInstruments();
 
