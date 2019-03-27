@@ -27,7 +27,7 @@
  * PHP MVC Controller base.
  *
  * @author giuliobosco
- * @version 1.0.3 (2019-03-13 - 2019-03-20)
+ * @version 1.0.4 (2019-03-13 - 2019-03-27)
  */
 class Controller {
 
@@ -64,5 +64,16 @@ class Controller {
 	 */
 	public function requireFooter():void {
 		require "application/views/_template/footer.html";
+	}
+
+	/**
+	 * Require a view of the controller.
+	 * In the view must be used object for read data.
+	 *
+	 * @param string $view_name View name.
+	 * @param $object Object with data for the view.
+	 */
+	public function req_view(string $view_name, $object):void {
+		require "application/views/" . get_class($this) . "/" . $view_name . ".php";
 	}
 }
