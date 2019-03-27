@@ -24,25 +24,35 @@
  */
 /**
  * @author giuliobosco
- * @version 1.0 (2019-03-20 - 2019-03-20)
+ * @version 1.0.1 (2019-03-20 - 2019-03-27)
  */
-?>
 
-<h2>Instruments</h2>
-<h3>Instruments list</h3>
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Model</th>
-		<th>Type</th>
-		<th>Price</th>
-	</tr>
-	<?php foreach ($instruments as $instrument): ?>
+$instruments = $object;
+?>
+<div class="col-md-12">
+	<h3>Instruments</h3>
+
+	<table class="table">
 		<tr>
-			<td><?php echo ($instrument->getName()); ?></td>
-			<td><?php echo ($instrument->getModel()); ?></td>
-			<td><?php echo ($instrument->getType()); ?></td>
-			<td><?php echo ($instrument->getPrice()); ?></td>
+			<th>Name</th>
+			<th>Model</th>
+			<th>Type</th>
+			<th>Price</th>
+			<th></th>
 		</tr>
-	<?php endforeach; ?>
-</table>
+		
+		<?php foreach ($instruments as $instrument): ?>
+			<tr>
+				<td><?php echo($instrument->getName()); ?></td>
+				<td><?php echo($instrument->getModel()); ?></td>
+				<td><?php echo($instrument->getType()); ?></td>
+				<td><?php echo($instrument->getPrice()); ?></td>
+				<th>
+					<a href="<?php echo URL; ?>Instruments/index/<?php echo $instrument->getId(); ?>">
+						Detail
+					</a>
+				</th>
+			</tr>
+		<?php endforeach; ?>
+	</table>
+</div>

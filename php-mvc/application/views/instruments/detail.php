@@ -22,44 +22,55 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
-require "controller.php";
-
 /**
  * @author giuliobosco
- * @version 1.0.1 (2019-03-20 - 2019-03-27)
+ * @version 1.0 (2019-03-27 - 2019-03-27)
  */
-class instruments extends Controller {
 
-	/**
-	 * Instruments constructor.
-	 * @param array $parameters Parameters of the controller.
-	 */
-	public function __construct(array $parameters) {
-		parent::__construct($parameters);
-	}
+$instrument = $object;
+?>
 
-	public function req_instrument(): void {
-		require "application/model/instrument.php";
-	}
+<div class="col-md-12">
+	<h3>Instrument</h3>
 
-	/**
-	 * Instruments index, instruments list.
-	 */
-	public function index(): void {
-		$this->requireHeader();
+	<div>
+		<b>
+			<a href="<?php echo URL; ?>Instruments/index">Back to list</a>
+		</b>
+	</div>
 
-		$this->req_instrument();
+	<div class="row">&nbsp;</div>
 
-		$instruments = instrument::getInstruments();
+	<div>
+		<table class="table">
+			<tr>
+				<th>property</th>
+				<th>value</th>
+			</tr>
+			<tr>
+				<td>name</td>
+				<td><?php echo $instrument->getName(); ?></td>
+			</tr>
+			<tr>
+				<td>model</td>
+				<td><?php echo $instrument->getModel(); ?></td>
+			</tr>
+			<tr>
+				<td>type</td>
+				<td><?php echo $instrument->getType(); ?></td>
+			</tr>
+			<tr>
+				<td>price</td>
+				<td><?php echo $instrument->getPrice(); ?></td>
+			</tr>
+		</table>
+	</div>
 
-		if (count($this->parameters) > 0) {
-			$instrument = array($instruments[$this->parameters[0]])[0];
-			$this->req_view("detail", $instrument);
-		} else {
-			$this->req_view("index", $instruments);
-		}
+	<div>
+		<a>DELETE</a>
+		|
+		<a>EDIT</a>
+	</div>
+</div>
 
-		$this->requireFooter();
-	}
-}
+<div class="clearfix"></div>
