@@ -26,9 +26,9 @@
  * PHP-MVC configuration.
  * 
  * @author giuliobosco
- * @version 1.1 (2019-03-13 - 2019-03-27)
+ * @version 1.1.1 (2019-03-13 - 2019-03-27)
  */
 
 define('URL', 'http://localhost/WebSAMT/php-mvc/');
 
-const INSTRUMENTS_CSV_FILE = "application/data/instruments.csv";
+define('INSTRUMENTS_CSV_FILE', 'application/data/instruments.csv');
