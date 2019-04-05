@@ -62,4 +62,15 @@ class instruments extends Controller {
 
 		$this->requireFooter();
 	}
+
+	public function delete(): void {
+		$this->req_instrument();
+
+		if (count($this->parameters) > 0) {
+			$instrument_id = $this->parameters[0];
+			instrument::removeFromCsv($instrument_id);
+		}
+
+		$this->index();
+	}
 }
