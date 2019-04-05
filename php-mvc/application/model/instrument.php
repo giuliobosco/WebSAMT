@@ -155,6 +155,18 @@ class instrument {
 	}
 
 	/**
+	 * Write all the instruments in the CSV file, will replace the existing.
+	 * @param array $instruments Instruments to write in the CSV.
+	 */
+	public static function writeCsv(array $instruments): void {
+		$csv_file = fopen(INSTRUMENTS_CSV_FILE, "w");
+
+		foreach($instruments as $instrument) {
+			fputcsv($csv_file, $instruments);
+		}
+	}
+
+	/**
 	 * Get the instruments in the csv file.
 	 *
 	 * @return array Instruments.
