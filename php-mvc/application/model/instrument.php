@@ -137,6 +137,23 @@ class instrument {
 		fclose($csv_file);
 	}
 
+	public static function removeFromCsv(int $id):void {
+		$instruments = self::getInstruments();
+
+		$row_i = -1;
+		for($i = 0; $i < count($instruments); $i++) {
+			if (in_array($id, $instruments[i])) {
+				$row_i = $i;
+			}
+		}
+
+		if ($row_i > -1) {
+			unset($instruments[$row_i]);
+		}
+
+		self::writeCsv($instruments);
+	}
+
 	/**
 	 * Get the instruments in the csv file.
 	 *
