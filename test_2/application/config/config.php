@@ -17,7 +17,7 @@ ini_set("display_errors", 1);
 /**
  * Configurazione di : URL del progetto
  */
-define('URL', 'http://localhost/template-MVC/');
+define('URL', 'http://localhost/WebSAMT/test_2/');
 
 
 
