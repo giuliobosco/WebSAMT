@@ -158,7 +158,7 @@ class utente {
         $file = fopen("./application/models/utenti.txt","w");
 
         foreach ($utenti as $key => $utente) {
-            fputcsv($file,$utente);
+            fputcsv($file,array($utente->getEmail(), $utente->getNome(), $utente->getCognome(), $utente->getNascita(), $utente->getPassword()));
         }
 
         fclose($file);
