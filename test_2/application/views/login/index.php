@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form action="index" method="POST">
+<form action="<?php echo URL ?>/login/index" method="POST">
     email:
     <input type="email" name="email">
     <br>
