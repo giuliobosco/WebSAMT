@@ -31,5 +31,7 @@
 	<?php endforeach; ?>
 </table>
 
+<a href="<?php echo URL; ?>utenti/create">Create New User</a>
+
 </body>
 </html>
