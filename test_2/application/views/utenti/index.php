@@ -22,7 +22,7 @@
         <td><?php echo($utente->getNascita()); ?></td>
         <td><?php echo($utente->getPassword()); ?></td>
         <td>
-            <a href="delete?<?php echo($utente->getEmail()); ?>">DELETE</a>
+            <a href="<?php echo URL . "utenti/delete/"; echo($utente->getEmail()); ?>">DELETE</a>
         </td>
     <?php endforeach; ?>
 </table>
