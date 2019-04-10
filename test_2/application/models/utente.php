@@ -117,9 +117,11 @@ class utente {
         // aggiungo ogni riga del file all array csv
         while (! feof($file)) {
             $line = fgetcsv($file, ",");
-            if (count($line) == 5) {
-                $utente = new utente($line[0], $line[1], $line[2], $line[3], $line[4]);
-                array_push($csv, $utente);
+            if ($line) {
+	            if (count($line) == 5) {
+		            $utente = new utente($line[0], $line[1], $line[2], $line[3], $line[4]);
+		            array_push($csv, $utente);
+	            }
             }
         }
         
