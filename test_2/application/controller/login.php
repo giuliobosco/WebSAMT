@@ -33,6 +33,6 @@ class login
         $nome = $utente["nome"];
         $cognome = $utente["cognome"];
 
-        require './application/views/login/home.php';
+        require './application/views/admin/index.php';
     }
 }
