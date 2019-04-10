@@ -48,11 +48,13 @@ class utente {
      * @param string $password password utente
      */
     public function __construct(string $email, string $nome, string $cognome, string $nascita, string $password) {
-        $this->email = strval($email);
-        $this->nome = strval($nome);
-        $this->cognome = strval($cognome);
-        $this->nascita = $nascita;
-        $this->password = strval($password);
+	    if (filter_var(strval($email), FILTER_VALIDATE_EMAIL)) {
+	    	$this->email = strval($email);
+		    $this->nome = strval($nome);
+		    $this->cognome = strval($cognome);
+		    $this->nascita = $nascita;
+		    $this->password = strval($password);
+	    }
     }
 
     /**
