@@ -2,7 +2,7 @@
 
 /**
  * Classe utente.
- * 
+ *
  * @author giuliobosco
  * @version 1.0 (2019-04-03)
  */
@@ -10,7 +10,7 @@ class utente {
 
     /**
      * email utente
-     * @var string 
+     * @var string
      */
     private $email;
 
@@ -19,7 +19,7 @@ class utente {
      * @var string
      */
     private $nome;
-    
+
     /**
      * cognome utente
      * @var string
@@ -40,7 +40,7 @@ class utente {
 
     /**
      * Utente costructor
-     * 
+     *
      * @param string $email email utente
      * @param string $nome nome utente
      * @param string $cognome cognome utente
@@ -59,7 +59,7 @@ class utente {
 
     /**
      * Get email utente
-     * 
+     *
      * @return string email utente
      */
     public function getEmail():string {
@@ -68,7 +68,7 @@ class utente {
 
     /**
      * Get nome utente
-     * 
+     *
      * @return stirng nome utente
      */
     public function getNome():string {
@@ -77,7 +77,7 @@ class utente {
 
     /**
      * Get cognome utente
-     * 
+     *
      * @return string cognome utente
      */
     public function getCognome():string {
@@ -86,7 +86,7 @@ class utente {
 
     /**
      * Get nascita utente
-     * 
+     *
      * @return datetime nascita utente
      */
     public function getNascita():string {
@@ -95,7 +95,7 @@ class utente {
 
     /**
      * Get nascita utente
-     * 
+     *
      * @return string password utente
      */
     public function getPassword():string {
@@ -104,16 +104,16 @@ class utente {
 
     /**
      * Get lista di utenti.
-     * 
+     *
      * @return array Utenti.
      */
     public static function getUtenti():array {
         // apro il file
         $file = fopen("./application/models/utenti.txt", "r");
-        
+
         // creo array per tutte le linee
         $csv = array();
-        
+
         // aggiungo ogni riga del file all array csv
         while (! feof($file)) {
             $line = fgetcsv($file, ",");
@@ -124,7 +124,7 @@ class utente {
 	            }
             }
         }
-        
+
         // chiudo il file
         fclose($file);
 
@@ -135,7 +135,7 @@ class utente {
     public static function checkUser(string $email, string $password):array {
         // apro il file
         $file = fopen("./application/models/utenti.txt","r");
-        
+
         // cerco l'utente
         while (! feof($file)) {
             $line = fgetcsv($file, ",");
@@ -146,7 +146,7 @@ class utente {
                 }
             }
         }
-        
+
         // chiudo il file
         fclose($file);
 
@@ -174,7 +174,7 @@ class utente {
             }
         }
 
-        $utenti = array_merge(array_splice($utenti, 0, $id - 1), array_splice($utenti, $id, count($utenti)));
+        $utenti = array_merge(array_splice($utenti, 0, $id), array_splice($utenti, $id+1, count($utenti)));
         self::write($utenti);
         header("location: " . URL . "utenti");
     }
