@@ -169,7 +169,7 @@ class utente {
 
         $id = -1;
         foreach ($utenti as $key => $utente) {
-            if ($utente[0] == $email) {
+            if ($utente->getEmail() == $email) {
                 $id = $key;
             }
         }
