@@ -175,7 +175,7 @@ class utente {
         }
 
         $utenti = array_merge(array_splice($utenti, 0, $id - 1), array_splice($utenti, $id, count($utenti)));
-        var_dump($utenti);
         self::write($utenti);
+        header("location: " . URL . "utenti");
     }
 }
