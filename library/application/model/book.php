@@ -23,11 +23,11 @@
  * THE SOFTWARE.
  */
 
-require "model.php";
+require_once "model.php";
 
 /**
  * @author giuliobosco
- * @version 1.1 (2019-04-17 - 2019-04-17)
+ * @version 1.1.1 (2019-04-17 - 2019-04-17)
  */
 class book extends model {
 

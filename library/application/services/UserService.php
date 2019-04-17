@@ -36,6 +36,10 @@ class UserService implements service {
 
 	private $users = array();
 
+	public function __construct() {
+		$this->loadFile();
+	}
+
 	public function loadFile() {
 		$this->users = array();
 		$csv_file = fopen(USERS_CSV_FILE, "r");
