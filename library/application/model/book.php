@@ -26,25 +26,25 @@
 
 /**
  * @author giuliobosco
- * @version 1.0 (2019-04-17 - 2019-04-17)
+ * @version 1.1 (2019-04-17 - 2019-04-17)
  */
 class book extends model {
 
-	private $titolo;
+	private $title;
 
-	private $autore;
+	private $author;
 
-	private $anno;
+	private $year;
 
-	private $edizione;
+	private $edition;
 
-	public function __construct($isbn, $titolo, $autore, $anno, $edizione) {
+	public function __construct($isbn, $title, $author, $year, $edition) {
 		parent::__construct($isbn);
 
-		$this->titolo = $titolo;
-		$this->autore = $autore;
-		$this->anno = $anno;
-		$this->edizione = $edizione;
+		$this->title = $title;
+		$this->author = $author;
+		$this->year = $year;
+		$this->edition = $edition;
 	}
 
 	public function getIsbn() {
@@ -54,29 +54,29 @@ class book extends model {
 	/**
 	 * @return mixed
 	 */
-	public function getTitolo() {
-		return $this->titolo;
+	public function getTitle() {
+		return $this->title;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function getAutore() {
-		return $this->autore;
+	public function getAuthor() {
+		return $this->author;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function getAnno() {
-		return $this->anno;
+	public function getYear() {
+		return $this->year;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function getEdizione() {
-		return $this->edizione;
+	public function getEdition() {
+		return $this->edition;
 	}
 
 }
