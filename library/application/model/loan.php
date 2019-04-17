@@ -29,21 +29,21 @@ require_once "model.php";
  * Library loan.
  *
  * @author giuliobosco
- * @version 1.0.2 (2019-04-17 - 2019-04-17)
+ * @version 1.1 (2019-04-17 - 2019-04-17)
  */
 class loan extends model {
 
 	/**
 	 * Library loan book.
 	 *
-	 * @var string
+	 * @var book
 	 */
 	private $book;
 
 	/**
 	 * Library loan user.
 	 *
-	 * @var string
+	 * @var user
 	 */
 	private $user;
 
@@ -66,8 +66,8 @@ class loan extends model {
 	 * loan constructor.
 	 *
 	 * @param $id string Library loan id.
-	 * @param $book string Library loan book.
-	 * @param $user string Library loan user.
+	 * @param $book book Library loan book.
+	 * @param $user user Library loan user.
 	 * @param $loan_date string Library loan start date.
 	 * @param null|string $return_date Library loan end date.
 	 */

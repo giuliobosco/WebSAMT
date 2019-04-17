@@ -35,7 +35,7 @@ require_once 'application/services/LoanService.php';
  * Controller for test models and services.
  *
  * @author giuliobosco
- * @version 1.0.3 (2019-04-17 - 2019-04-17)
+ * @version 1.0.4 (2019-04-17 - 2019-04-17)
  */
 class test extends Controller {
 
@@ -104,13 +104,15 @@ class test extends Controller {
 	 */
 	public function LoanService(): void {
 		$service = new LoanService();
+		$bookService = new BookService();
+		$userService = new UserService();
 
 		var_dump($service->get());
 
 		var_dump($service->get("0"));
 
 		//3;10;admin;2019/04/01;null
-		$loan = new loan("3", "10", "admin", "2019/04/01", "2019/04/02");
+		$loan = new loan("3", $bookService->get("10")[0], $userService->get("admin")[0], "2019/04/01", "2019/04/02");
 		$service->add($loan);
 		$service->writeFile();
 		$service->loadFile();

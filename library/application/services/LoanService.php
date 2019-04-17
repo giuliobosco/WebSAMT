@@ -25,12 +25,14 @@
 
 require_once 'service.php';
 require_once 'application/model/loan.php';
+require_once 'BookService.php';
+require_once 'UserService.php';
 
 /**
  * Loan Service.
  *
  * @author giuliobosco
- * @version 1.0.1 (2019-04-17 - 2019-04-17)
+ * @version 1.1 (2019-04-17 - 2019-04-17)
  */
 class LoanService implements service {
 
@@ -59,6 +61,9 @@ class LoanService implements service {
 		$this->loans = array();
 		$csv_file = fopen(LOANS_CSV_FILE, "r");
 
+		$userService = new UserService();
+		$bookService = new BookService();
+
 		fgetcsv($csv_file);
 
 		while (!feof($csv_file)) {
@@ -68,8 +73,8 @@ class LoanService implements service {
 			if (count($string) > 4) {
 				$loan = new loan(
 					strval($string[0]),
-					strval($string[1]),
-					strval($string[2]),
+					$bookService->get($string[1])[0],
+					$userService->get($string[2])[0],
 					strval($string[3]),
 					strval($string[4])
 				);
@@ -92,13 +97,14 @@ class LoanService implements service {
 
 		foreach ($this->loans as $loan) {
 			$line = $loan->getId();
-			$line .= self::CSV_SEPARATOR . $loan->getBook();
-			$line .= self::CSV_SEPARATOR . $loan->getUser();
+			$line .= self::CSV_SEPARATOR . $loan->getBook()->getIsbn();
+			$line .= self::CSV_SEPARATOR . $loan->getUser()->getUsername();
 			$line .= self::CSV_SEPARATOR . $loan->getLoanDate();
 			$line .= self::CSV_SEPARATOR . $loan->getReturnDate();
 
 			fputcsv($csv_file, array($line));
 		}
+
 
 		fclose($csv_file);
 	}
