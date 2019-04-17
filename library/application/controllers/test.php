@@ -26,10 +26,12 @@
 require_once "controller.php";
 require_once "application/model/user.php";
 require_once "application/services/UserService.php";
+require_once 'application/model/book.php';
+require_once 'application/services/BookService.php';
 
 /**
  * @author giuliobosco
- * @version 1.0 (2019-04-17 - 2019-04-17)
+ * @version 1.0.1 (2019-04-17 - 2019-04-17)
  */
 class test extends Controller {
 
@@ -54,6 +56,26 @@ class test extends Controller {
 		$service->loadFile();
 		var_dump($service->get());
 		$service->remove($user);
+		$service->writeFile();
+		$service->loadFile();
+		var_dump($service->get());
+	}
+
+	public function BookService():void {
+		$service = new BookService();
+
+		$service->loadFile();
+		var_dump($service->get());
+
+		var_dump($service->get("10"));
+
+		$book = new book("20", "Libro 2", "Autore", "2019", "1");
+		$service->add($book);
+		$service->writeFile();
+		$service->loadFile();
+		var_dump($service->get());
+
+		$service->remove($book);
 		$service->writeFile();
 		$service->loadFile();
 		var_dump($service->get());
