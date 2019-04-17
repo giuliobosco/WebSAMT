@@ -26,7 +26,7 @@
 
 /**
  * @author giuliobosco
- * @version 1.0 (2019-04-17 - 2019-04-17)
+ * @version 1.0.1 (2019-04-17 - 2019-04-17)
  */
 class user extends model {
 
@@ -69,6 +69,10 @@ class user extends model {
 	 */
 	public function getLastName() {
 		return $this->last_name;
+	}
+
+	public function getPassword() {
+		return $this->password;
 	}
 
 	/**
