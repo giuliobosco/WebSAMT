@@ -23,6 +23,7 @@
  * THE SOFTWARE.
  */
 
+require "model.php";
 
 /**
  * @author giuliobosco

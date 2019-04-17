@@ -23,6 +23,7 @@
  * THE SOFTWARE.
  */
 
+require "loan.php";
 
 /**
  * @author giuliobosco
