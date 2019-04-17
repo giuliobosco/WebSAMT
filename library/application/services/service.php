@@ -28,7 +28,7 @@
  * Model service example.
  *
  * @author giuliobosco
- * @version 1.0 (2019-04-10 - 2019-04-10)
+ * @version 1.0.1 (2019-04-10 - 2019-04-17)
  */
 interface service {
 
@@ -51,10 +51,10 @@ interface service {
 	/**
 	 * Get model or models.
 	 *
-	 * @param object|null $id Id of the model or null for array of all models.
+	 * @param $id Id of the model or null for array of all models.
 	 * @return array Models in array, if only one is at index 0.
 	 */
-	public function get(object $id = null): array ;
+	public function get($id = null): array ;
 
 	/**
 	 * Update model in list.
