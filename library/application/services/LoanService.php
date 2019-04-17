@@ -27,19 +27,34 @@ require_once 'service.php';
 require_once 'application/model/loan.php';
 
 /**
+ * Loan Service.
+ *
  * @author giuliobosco
- * @version 1.0 (2019-04-17 - 2019-04-17)
+ * @version 1.0.1 (2019-04-17 - 2019-04-17)
  */
 class LoanService implements service {
 
+	/**
+	 * Book csv file separator.
+	 */
 	private const CSV_SEPARATOR = ";";
 
+	/**
+	 * @var array Loans.
+	 */
 	private $loans = array();
 
+	/**
+	 * LoanService constructor.
+	 * Load csv file.
+	 */
 	public function __construct() {
 		$this->loadFile();
 	}
 
+	/**
+	 * Load CSV file in loans.
+	 */
 	public function loadFile() {
 		$this->loans = array();
 		$csv_file = fopen(LOANS_CSV_FILE, "r");
@@ -66,6 +81,9 @@ class LoanService implements service {
 		fclose($csv_file);
 	}
 
+	/**
+	 * Write loans in csv file.
+	 */
 	public function writeFile() {
 		$csv_file = fopen(LOANS_CSV_FILE, "w");
 

@@ -27,19 +27,34 @@ require_once 'service.php';
 require_once 'application/model/book.php';
 
 /**
+ * Book Service.
+ *
  * @author giuliobosco
- * @version 1.0 (2019-04-17 - 2019-04-17)
+ * @version 1.0.1 (2019-04-17 - 2019-04-17)
  */
 class BookService implements service {
 
+	/**
+	 * Book csv file separator.
+	 */
 	private const CSV_SEPARATOR = ";";
 
+	/**
+	 * @var array Books.
+	 */
 	private $books = array();
 
+	/**
+	 * BookService constructor.
+	 * Load csv file.
+	 */
 	public function __construct() {
 		$this->loadFile();
 	}
 
+	/**
+	 * Load CSV file in books.
+	 */
 	public function loadFile() {
 		$this->books = array();
 		$csv_file = fopen(BOOKS_CSV_FILE, "r");
@@ -66,6 +81,9 @@ class BookService implements service {
 		fclose($csv_file);
 	}
 
+	/**
+	 * Write books in csv file.
+	 */
 	public function writeFile() {
 		$csv_file = fopen(BOOKS_CSV_FILE, "w");
 

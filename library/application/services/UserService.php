@@ -27,19 +27,34 @@ require_once 'service.php';
 require_once 'application/model/user.php';
 
 /**
+ * User service.
+ *
  * @author giuliobosco
- * @version 1.0 (2019-04-17 - 2019-04-17)
+ * @version 1.0.1 (2019-04-17 - 2019-04-17)
  */
 class UserService implements service {
 
+	/**
+	 * Book csv file separator.
+	 */
 	private const CSV_SEPARATOR = ";";
 
+	/**
+	 * @var array Users.
+	 */
 	private $users = array();
 
+	/**
+	 * UserService constructor.
+	 * Load csv file.
+	 */
 	public function __construct() {
 		$this->loadFile();
 	}
 
+	/**
+	 * Load csv file in users.
+	 */
 	public function loadFile() {
 		$this->users = array();
 		$csv_file = fopen(USERS_CSV_FILE, "r");
@@ -68,6 +83,9 @@ class UserService implements service {
 		fclose($csv_file);
 	}
 
+	/**
+	 * Write loans in csv file.
+	 */
 	public function writeFile(){
 		$csv_file = fopen(USERS_CSV_FILE, "w");
 

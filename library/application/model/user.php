@@ -26,23 +26,53 @@
 require "model.php";
 
 /**
+ * Library user.
+ *
  * @author giuliobosco
- * @version 1.0.1 (2019-04-17 - 2019-04-17)
+ * @version 1.0.2 (2019-04-17 - 2019-04-17)
  */
 class user extends model {
 
+	/**
+	 * @var string User first name.
+	 */
 	private $first_name;
 
+	/**
+	 * @var string User last name.
+	 */
 	private $last_name;
 
+	/**
+	 * @var string User password.
+	 */
 	private $password;
 
+	/**
+	 * @var string User full address.
+	 */
 	private $address;
 
+	/**
+	 * @var string User born date.
+	 */
 	private $born_date;
 
+	/**
+	 * @var string User kind (Administrator/Normal).
+	 */
 	private $user_kind;
 
+	/**
+	 * user constructor.
+	 * @param $username string User username.
+	 * @param $first_name User first name.
+	 * @param $last_name User last name.
+	 * @param $password User password.
+	 * @param $address User address.
+	 * @param $born_date User born date.
+	 * @param $user_kind User kind.
+	 */
 	public function __construct($username, $first_name, $last_name, $password, $address, $born_date, $user_kind) {
 		parent::__construct($username);
 
@@ -54,49 +84,75 @@ class user extends model {
 		$this->user_kind = $user_kind;
 	}
 
+	/**
+	 * Get the user username.
+	 *
+	 * @return string User username.
+	 */
 	public function getUsername() {
 		return parent::getId();
 	}
 
 	/**
-	 * @return mixed
+	 * Get the user first name.
+	 *
+	 * @return mixed User first name.
 	 */
 	public function getFirstName() {
 		return $this->first_name;
 	}
 
 	/**
-	 * @return mixed
+	 * Get the user last name.
+	 *
+	 * @return mixed User last name.
 	 */
 	public function getLastName() {
 		return $this->last_name;
 	}
 
+	/**
+	 * Get the user password.
+	 *
+	 * @return string User password.
+	 */
 	public function getPassword() {
 		return $this->password;
 	}
 
 	/**
-	 * @return mixed
+	 * Get the user address.
+	 *
+	 * @return mixed User address.
 	 */
 	public function getAddress() {
 		return $this->address;
 	}
 
 	/**
-	 * @return mixed
+	 * Get the user born date.
+	 *
+	 * @return mixed User born date.
 	 */
 	public function getBornDate() {
 		return $this->born_date;
 	}
 
 	/**
-	 * @return mixed
+	 * Get the user kind.
+	 *
+	 * @return mixed User kind.
 	 */
 	public function getUserKind() {
 		return $this->user_kind;
 	}
 
+	/**
+	 * Check the password of the user.
+	 *
+	 * @param $password string Password of the user.
+	 * @return bool True if password is right, otherwise false.
+	 */
 	public function isRightPassword($password) {
 		return $password == $this->password;
 	}

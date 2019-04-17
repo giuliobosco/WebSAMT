@@ -26,19 +26,51 @@
 require_once "model.php";
 
 /**
+ * Library loan.
+ *
  * @author giuliobosco
- * @version 1.0.1 (2019-04-17 - 2019-04-17)
+ * @version 1.0.2 (2019-04-17 - 2019-04-17)
  */
 class loan extends model {
 
+	/**
+	 * Library loan book.
+	 *
+	 * @var string
+	 */
 	private $book;
 
+	/**
+	 * Library loan user.
+	 *
+	 * @var string
+	 */
 	private $user;
 
+	/**
+	 * Library loan start date.
+	 *
+	 * @var string
+	 */
 	private $loan_date;
 
+	/**
+	 * Library loan end date.
+	 * If not returned is null.
+	 *
+	 * @var string|null
+	 */
 	private $return_date;
 
+	/**
+	 * loan constructor.
+	 *
+	 * @param $id string Library loan id.
+	 * @param $book string Library loan book.
+	 * @param $user string Library loan user.
+	 * @param $loan_date string Library loan start date.
+	 * @param null|string $return_date Library loan end date.
+	 */
 	public function __construct($id, $book, $user, $loan_date, $return_date = null) {
 		parent::__construct($id);
 
@@ -49,28 +81,36 @@ class loan extends model {
 	}
 
 	/**
-	 * @return mixed
+	 * Get the Library loan book.
+	 *
+	 * @return mixed Library loan book.
 	 */
 	public function getBook() {
 		return $this->book;
 	}
 
 	/**
-	 * @return mixed
+	 * Get the Library loan user.
+	 *
+	 * @return mixed Library loan user.
 	 */
 	public function getUser() {
 		return $this->user;
 	}
 
 	/**
-	 * @return mixed
+	 * Get the Library loan start date.
+	 *
+	 * @return mixed Library loan start date.
 	 */
 	public function getLoanDate() {
 		return $this->loan_date;
 	}
 
 	/**
-	 * @return null
+	 * Get the Library loan end date.
+	 *
+	 * @return null|string Library loan end date.
 	 */
 	public function getReturnDate() {
 		return $this->return_date;

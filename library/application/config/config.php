@@ -26,14 +26,16 @@
  * PHP-MVC configuration.
  * 
  * @author giuliobosco
- * @version 1.2 (2019-03-13 - 2019-04-17)
+ * @version 1.2.1 (2019-03-13 - 2019-04-17)
  */
 
 $DEFAULT_CONTROLLER = "home";
 $DEFAULT_CONTROLLER_ACTION = "index";
 
+// base project url
 define('URL', 'http://localhost/WebSAMT/library/');
 
+// data csv files paths.
 define('USERS_CSV_FILE', 'application/data/users.csv');
 define('BOOKS_CSV_FILE', 'application/data/books.csv');
 define('LOANS_CSV_FILE', 'application/data/loans.csv');
