@@ -28,7 +28,7 @@
  * Model example.
  *
  * @author giuliobosco
- * @version 1.0 (2019-04-10 - 2019-04-10)
+ * @version 1.0.1 (2019-04-10 - 2019-04-17)
  */
 class model {
 
@@ -37,7 +37,7 @@ class model {
 	 *
 	 * @var int
 	 */
-	private $id;
+	protected $id;
 
 	/**
 	 * model constructor.
