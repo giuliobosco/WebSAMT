@@ -28,10 +28,12 @@ require_once "application/model/user.php";
 require_once "application/services/UserService.php";
 require_once 'application/model/book.php';
 require_once 'application/services/BookService.php';
+require_once 'application/model/loan.php';
+require_once 'application/services/LoanService.php';
 
 /**
  * @author giuliobosco
- * @version 1.0.1 (2019-04-17 - 2019-04-17)
+ * @version 1.0.2 (2019-04-17 - 2019-04-17)
  */
 class test extends Controller {
 
@@ -76,6 +78,26 @@ class test extends Controller {
 		var_dump($service->get());
 
 		$service->remove($book);
+		$service->writeFile();
+		$service->loadFile();
+		var_dump($service->get());
+	}
+
+	public function LoanService(): void {
+		$service = new LoanService();
+
+		var_dump($service->get());
+
+		var_dump($service->get("0"));
+
+		//3;10;admin;2019/04/01;null
+		$loan = new loan("3", "10", "admin", "2019/04/01", "2019/04/02");
+		$service->add($loan);
+		$service->writeFile();
+		$service->loadFile();
+		var_dump($service->get());
+
+		$service->remove($loan);
 		$service->writeFile();
 		$service->loadFile();
 		var_dump($service->get());
