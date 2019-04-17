@@ -23,11 +23,11 @@
  * THE SOFTWARE.
  */
 
-require "loan.php";
+require_once "model.php";
 
 /**
  * @author giuliobosco
- * @version 1.0 (2019-04-17 - 2019-04-17)
+ * @version 1.0.1 (2019-04-17 - 2019-04-17)
  */
 class loan extends model {
 
