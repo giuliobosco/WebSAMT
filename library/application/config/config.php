@@ -33,3 +33,5 @@ $DEFAULT_CONTROLLER = "home";
 $DEFAULT_CONTROLLER_ACTION = "index";
 
 define('URL', 'http://localhost/WebSAMT/biblioteca/');
+
+define('INSTRUMENTS_CSV_FILE', 'application/data/instruments.csv');

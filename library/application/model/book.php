@@ -28,7 +28,7 @@
  * @author giuliobosco
  * @version 1.0 (2019-04-17 - 2019-04-17)
  */
-class libro extends model {
+class book extends model {
 
 	private $titolo;
 
