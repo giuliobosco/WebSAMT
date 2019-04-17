@@ -92,4 +92,7 @@ class user extends model {
 		return $this->user_kind;
 	}
 
+	public function isRightPassword($password) {
+		return $password == $this->password;
+	}
 }
