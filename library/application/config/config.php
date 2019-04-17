@@ -32,7 +32,7 @@
 $DEFAULT_CONTROLLER = "home";
 $DEFAULT_CONTROLLER_ACTION = "index";
 
-define('URL', 'http://localhost/WebSAMT/biblioteca/');
+define('URL', 'http://localhost/WebSAMT/library/');
 
 define('USERS_CSV_FILE', 'application/data/users.csv');
 define('BOOKS_CSV_FILE', 'application/data/books.csv');
