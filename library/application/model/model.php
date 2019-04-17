@@ -35,25 +35,25 @@ class model {
 	/**
 	 * Model id.
 	 *
-	 * @var int
+	 * @var
 	 */
 	protected $id;
 
 	/**
 	 * model constructor.
 	 *
-	 * @param int $id Model id.
+	 * @param $id Model id.
 	 */
-	public function __construct(int $id) {
+	public function __construct( $id) {
 		$this->id = $id;
 	}
 
 	/**
 	 * Get the model id.
 	 *
-	 * @return int Model id.
+	 * @return Model id.
 	 */
-	public function getId(): int {
+	public function getId() {
 		return $this->id;
 	}
 }

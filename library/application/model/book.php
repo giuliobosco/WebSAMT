@@ -38,7 +38,7 @@ class book extends model {
 
 	private $edizione;
 
-	public function __construct(int $isbn, $titolo, $autore, $anno, $edizione) {
+	public function __construct($isbn, $titolo, $autore, $anno, $edizione) {
 		parent::__construct($isbn);
 
 		$this->titolo = $titolo;
@@ -47,7 +47,7 @@ class book extends model {
 		$this->edizione = $edizione;
 	}
 
-	public function getIsbn(): int {
+	public function getIsbn() {
 		return parent::getId();
 	}
 

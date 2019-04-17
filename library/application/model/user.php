@@ -42,7 +42,7 @@ class user extends model {
 
 	private $user_kind;
 
-	public function __construct(int $username, $first_name, $last_name, $password, $address, $born_date, $user_kind) {
+	public function __construct($username, $first_name, $last_name, $password, $address, $born_date, $user_kind) {
 		parent::__construct($username);
 
 		$this->first_name = $first_name;

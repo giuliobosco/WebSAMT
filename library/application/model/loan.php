@@ -38,7 +38,7 @@ class loan extends model {
 
 	private $return_date;
 
-	public function __construct(int $id, $book, $user, $loan_date, $return_date = null) {
+	public function __construct($id, $book, $user, $loan_date, $return_date = null) {
 		parent::__construct($id);
 
 		$this->book = $book;
