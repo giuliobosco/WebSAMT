@@ -24,7 +24,7 @@
  */
 /**
  * @author giuliobosco
- * @version 1.0.1 (2019-05-01 - 2019-05-01)
+ * @version 1.0.2 (2019-05-01 - 2019-05-01)
  */
 
 $books = $data;
@@ -55,6 +55,10 @@ $books = $data;
 				<th>
 					<a href="<?php echo URL; ?>books/index/<?php echo $book->getId(); ?>">
 						Detail
+					</a>
+					|
+					<a href="<?php echo URL; ?>books/delete/<?php echo $book->getId(); ?>">
+						Delete
 					</a>
 				</th>
 			</tr>

@@ -24,7 +24,7 @@
  */
 /**
  * @author giuliobosco
- * @version 1.0 (2019-05-01 - 2019-05-01)
+ * @version 1.0.1 (2019-05-01 - 2019-05-01)
  */
 
 
@@ -75,7 +75,7 @@ if (count($data) > 0):
 		<div>
 			<a style="color: #ffffff;background-color: #ff0000" class="btn"
 			   href="<?php echo URL; ?>books/delete/<?php echo $book->getIsbn(); ?>/confirmed">DELETE</a>
-			<a class="btn">Cancel</a>
+			<a class="btn" href="<?php echo URL; ?>books/index/<?php echo $book->getIsbn(); ?>">Cancel</a>
 		</div>
 	</div>
 
