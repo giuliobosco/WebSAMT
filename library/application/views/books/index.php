@@ -30,7 +30,10 @@
 $books = $data;
 ?>
 <div class="col-md-12">
-	<h3>Instruments</h3>
+	<h3>books</h3>
+	<h4>
+		<a href="<?php echo URL; ?>books/create">add new book</a>
+	</h4>
 
 	<table class="table">
 		<tr>
