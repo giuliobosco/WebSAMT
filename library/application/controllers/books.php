@@ -27,7 +27,7 @@ require_once "controller.php";
 
 /**
  * @author giuliobosco
- * @version 1.0.4 (2019-05-01 - 2019-05-01)
+ * @version 1.0.5 (2019-05-01 - 2019-05-01)
  */
 class books extends Controller {
 	public function __construct(array $parameters) {
@@ -60,7 +60,8 @@ class books extends Controller {
 				$bookService->loadFile();
 				$bookService->addByKeyArray($_POST);
 				$bookService->writeFile();
-				$this->index();
+
+				header("location:".URL."books/index");
 			} catch (Exception $e) {
 				$this->req_view("create", $_POST, array($e->getMessage()));
 			}
