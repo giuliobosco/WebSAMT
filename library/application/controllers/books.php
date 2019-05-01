@@ -27,11 +27,12 @@ require_once "controller.php";
 
 /**
  * @author giuliobosco
- * @version 1.0 (2019-05-01 - 2019-05-01)
+ * @version 1.0.1 (2019-05-01 - 2019-05-01)
  */
 class books extends Controller {
 	public function __construct(array $parameters) {
 		parent::__construct($parameters);
+		$this->req_model_service();
 	}
 
 	public function req_model_service():void {
@@ -40,10 +41,6 @@ class books extends Controller {
 	}
 
 	public function index():void {
-		$this->requireHeader();
-
-		$this->req_model_service();
-
 		$bookService = new BookService();
 		$bookService->loadFile();
 		$books = $bookService->get();
@@ -54,7 +51,21 @@ class books extends Controller {
 		} else {
 			$this->req_view("index", $books);
 		}
+	}
 
-		$this->requireFooter();
+	public function create(): void {
+		if (count($_POST) > 0) {
+			try {
+				$bookService = new BookService();
+				$bookService->loadFile();
+				$bookService->addByKeyArray($_POST);
+				$bookService->writeFile();
+				$this->index();
+			} catch (Exception $e) {
+				$this->req_view("create", $_POST, array($e->getMessage()));
+			}
+		} else {
+			$this->req_view("create", array());
+		}
 	}
 }

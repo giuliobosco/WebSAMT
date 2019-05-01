@@ -30,7 +30,7 @@ require_once 'application/model/book.php';
  * Book Service.
  *
  * @author giuliobosco
- * @version 1.0.1 (2019-04-17 - 2019-04-17)
+ * @version 1.0.2 (2019-04-17 - 2019-05-01)
  */
 class BookService implements service {
 
@@ -65,16 +65,8 @@ class BookService implements service {
 			$string = fgetcsv($csv_file)[0];
 			$string = explode(self::CSV_SEPARATOR, $string);
 
-			if (count($string) > 4) {
-				$book = new book(
-					strval($string[0]),
-					strval($string[1]),
-					strval($string[2]),
-					strval($string[3]),
-					strval($string[4])
-				);
-
-				array_push($this->books, $book);
+			if (strlen($string[0]) > 0) {
+				$s = $this->addByArray($string);
 			}
 		}
 
@@ -101,6 +93,40 @@ class BookService implements service {
 		}
 
 		fclose($csv_file);
+	}
+
+	/**
+	 * Add model by array.
+	 *
+	 * @param array $data Array of data.
+	 * @return object Added object, null if array not valid.
+	 */
+	public function addByArray(array $data): object {
+		if (count($data) > 4) {
+			$object = new book($data[0], $data[1], $data[2], $data[3], $data[4]);
+			array_push($this->books, $object);
+			return $object;
+		}
+
+		return null;
+	}
+
+	/**
+	 * Add model by array with key.
+	 *
+	 * @param array $data
+	 * @return object
+	 * @throws Exception
+	 */
+	public function addByKeyArray(array $data):object {
+		$requiredValues = array('isbn', 'title', 'author', 'year', 'edition');
+		foreach ($requiredValues as $requiredValue) {
+			if (!isset($data[$requiredValue])) {
+				throw new Exception("No required value: $requiredValue");
+			}
+		}
+
+		return $this->addByArray(array_values($data));
 	}
 
 
