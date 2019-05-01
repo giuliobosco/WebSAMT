@@ -24,7 +24,7 @@
  */
 /**
  * @author giuliobosco
- * @version 1.0
+ * @version 1.0.1 (2019-05-01 - 2019-05-01)
  */
 
 if (count($data) > 0):
@@ -73,8 +73,6 @@ if (count($data) > 0):
 
 		<div>
 			<a class="btn" href="<?php echo URL; ?>books/delete/<?php echo $book->getIsbn(); ?>">DELETE</a>
-			|
-			<a>EDIT</a>
 		</div>
 	</div>
 
