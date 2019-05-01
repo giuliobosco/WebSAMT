@@ -32,7 +32,7 @@ require_once 'UserService.php';
  * Loan Service.
  *
  * @author giuliobosco
- * @version 1.1.2 (2019-04-17 - 2019-05-01)
+ * @version 1.1.3 (2019-04-17 - 2019-05-01)
  */
 class LoanService implements service {
 
@@ -95,7 +95,7 @@ class LoanService implements service {
 			}
 		}
 
-		return $this->addByArray($data);
+		return $this->addByArray(array_values($data));
 	}
 
 	/**
