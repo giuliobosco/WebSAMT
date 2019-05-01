@@ -32,7 +32,7 @@ require_once 'UserService.php';
  * Loan Service.
  *
  * @author giuliobosco
- * @version 1.1.1 (2019-04-17 - 2019-05-01)
+ * @version 1.1.2 (2019-04-17 - 2019-05-01)
  */
 class LoanService implements service {
 
@@ -79,7 +79,7 @@ class LoanService implements service {
 		if (count($data) > 4) {
 			$userService = new UserService();
 			$bookService = new BookService();
-			$object = new loan(strval(data[0]), $bookService->get($data[1])[0], $userService->get($data[2])[0], strval($data[3]), strval($data[4]));
+			$object = new loan(strval($data[0]), $bookService->get($data[1])[0], $userService->get($data[2])[0], strval($data[3]), strval($data[4]));
 			array_push($this->loans, $object);
 			return $object;
 		}
