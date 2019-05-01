@@ -71,9 +71,9 @@ class Controller {
 	 * In the view must be used object for read data.
 	 *
 	 * @param string $view_name View name.
-	 * @param $object Object with data for the view.
+	 * @param $data array Object with data for the view.
 	 */
-	public function req_view(string $view_name, $object):void {
+	public function req_view(string $view_name, array $data):void {
 		require "application/views/" . get_class($this) . "/" . $view_name . ".php";
 	}
 }
