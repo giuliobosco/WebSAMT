@@ -27,7 +27,7 @@ require_once "controller.php";
 
 /**
  * @author giuliobosco
- * @version 1.0 (2019-05-01 - 2019-05-01)
+ * @version 1.0.1 (2019-05-01 - 2019-05-01)
  */
 class users extends Controller {
 
@@ -74,7 +74,7 @@ class users extends Controller {
 		$userService = new UserService();
 		$userService->loadFile();
 
-		if (count($this->parameters) > 0) {
+		if (count($this->parameters) == 1) {
 			$user = $userService->get($this->parameters[0]);
 			$this->req_view("delete", $user);
 			return;
