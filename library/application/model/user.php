@@ -23,13 +23,13 @@
  * THE SOFTWARE.
  */
 
-require "model.php";
+require_once "model.php";
 
 /**
  * Library user.
  *
  * @author giuliobosco
- * @version 1.0.2 (2019-04-17 - 2019-04-17)
+ * @version 1.0.3 (2019-04-17 - 2019-05-01)
  */
 class user extends model {
 
