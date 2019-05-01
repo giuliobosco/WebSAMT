@@ -24,7 +24,7 @@
  */
 /**
  * @author giuliobosco
- * @version 1.0
+ * @version 1.0.1 (2019-05-01 - 2019-05-01)
  */
 ?>
 
@@ -52,7 +52,7 @@
 					</tr>
 					<tr>
 						<td>Username</td>
-						<td><input type="number" name="username" value="<?php echo $data['username']; ?>" required></td>
+						<td><input type="text" name="username" value="<?php echo $data['username']; ?>" required></td>
 					</tr>
 					<tr>
 						<td>First name</td>
@@ -90,7 +90,7 @@
 					</tr>
 					<tr>
 						<td>Username</td>
-						<td><input type="number" name="username" required></td>
+						<td><input type="text" name="username" required></td>
 					</tr>
 					<tr>
 						<td>First name</td>
