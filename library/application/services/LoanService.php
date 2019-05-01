@@ -32,7 +32,7 @@ require_once 'UserService.php';
  * Loan Service.
  *
  * @author giuliobosco
- * @version 1.1 (2019-04-17 - 2019-04-17)
+ * @version 1.1.1 (2019-04-17 - 2019-05-01)
  */
 class LoanService implements service {
 
@@ -61,29 +61,41 @@ class LoanService implements service {
 		$this->loans = array();
 		$csv_file = fopen(LOANS_CSV_FILE, "r");
 
-		$userService = new UserService();
-		$bookService = new BookService();
-
 		fgetcsv($csv_file);
 
 		while (!feof($csv_file)) {
 			$string = fgetcsv($csv_file)[0];
 			$string = explode(self::CSV_SEPARATOR, $string);
 
-			if (count($string) > 4) {
-				$loan = new loan(
-					strval($string[0]),
-					$bookService->get($string[1])[0],
-					$userService->get($string[2])[0],
-					strval($string[3]),
-					strval($string[4])
-				);
-
-				array_push($this->loans, $loan);
+			if (strlen($string[0]) > 0) {
+				$this->addByArray($string);
 			}
 		}
 
 		fclose($csv_file);
+	}
+
+	public function addByArray(array $data): object {
+		if (count($data) > 4) {
+			$userService = new UserService();
+			$bookService = new BookService();
+			$object = new loan(strval(data[0]), $bookService->get($data[1])[0], $userService->get($data[2])[0], strval($data[3]), strval($data[4]));
+			array_push($this->loans, $object);
+			return $object;
+		}
+
+		return null;
+	}
+
+	public function addByKeyArray(array $data):object {
+		$requiredValues = array('id', 'book', 'user', 'loan_date','return_date');
+		foreach ($requiredValues as $requiredValue) {
+			if (!array_key_exists($requiredValue, $data)) {
+				throw new Exception("No required value: $requiredValue");
+			}
+		}
+
+		return $this->addByArray($data);
 	}
 
 	/**
