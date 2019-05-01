@@ -30,7 +30,7 @@ require_once 'application/model/user.php';
  * User service.
  *
  * @author giuliobosco
- * @version 1.0.1 (2019-04-17 - 2019-04-17)
+ * @version 1.0.2 (2019-04-17 - 2019-05-01)
  */
 class UserService implements service {
 
@@ -65,18 +65,8 @@ class UserService implements service {
 			$string = fgetcsv($csv_file)[0];
 			$string = explode(self::CSV_SEPARATOR, $string);
 
-			if (count($string) > 6) {
-				$user = new user(
-					strval($string[0]),
-					strval($string[1]),
-					strval($string[2]),
-					strval($string[3]),
-					strval($string[4]),
-					strval($string[5]),
-					strval($string[6])
-				);
-
-				array_push($this->users, $user);
+			if (strlen($string[0]) > 0) {
+				$this->addByArray($string);
 			}
 		}
 
@@ -105,6 +95,27 @@ class UserService implements service {
 		}
 
 		fclose($csv_file);
+	}
+
+	public function addByArray(array $data):object {
+		if (count($data) > 6) {
+			$object = new user($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6]);
+			array_push($this->users, $object);
+			return $object;
+		}
+
+		return null;
+	}
+
+	public function addByKeyArray(array $data):object {
+		$requiredValues = array('username', 'first_name', 'last_name', 'password', 'address', 'born_date', 'kind');
+		foreach ($requiredValues as $requiredValue) {
+			if (!isset($_POST[$requiredValues])) {
+				throw new Exception("No required value: $requiredValue");
+			}
+		}
+
+		return $this->addByArray(array_values($data));
 	}
 
 	/**
