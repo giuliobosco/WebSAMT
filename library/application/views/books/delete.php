@@ -24,15 +24,16 @@
  */
 /**
  * @author giuliobosco
- * @version 1.0
+ * @version 1.0 (2019-05-01 - 2019-05-01)
  */
+
 
 if (count($data) > 0):
 	$book = $data[0];
 	?>
 
 	<div class="col-md-12">
-		<h3>book</h3>
+		<h3>Delete book</h3>
 
 		<div>
 			<b>
@@ -72,9 +73,9 @@ if (count($data) > 0):
 		</div>
 
 		<div>
-			<a class="btn" href="<?php echo URL; ?>books/delete/<?php echo $book->getIsbn(); ?>">DELETE</a>
-			|
-			<a>EDIT</a>
+			<a style="color: #ffffff;background-color: #ff0000" class="btn"
+			   href="<?php echo URL; ?>books/delete/<?php echo $book->getIsbn(); ?>/confirmed">DELETE</a>
+			<a class="btn">Cancel</a>
 		</div>
 	</div>
 

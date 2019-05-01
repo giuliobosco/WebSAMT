@@ -27,7 +27,7 @@ require_once "controller.php";
 
 /**
  * @author giuliobosco
- * @version 1.0.3 (2019-05-01 - 2019-05-01)
+ * @version 1.0.4 (2019-05-01 - 2019-05-01)
  */
 class books extends Controller {
 	public function __construct(array $parameters) {
@@ -67,5 +67,22 @@ class books extends Controller {
 		} else {
 			$this->req_view("create", array());
 		}
+	}
+
+	public function delete(): void {
+		$bookService = new BookService();
+		$bookService->loadFile();
+
+		if (count($this->parameters) == 1) {
+			$book = $bookService->get($this->parameters[0]);
+			$this->req_view("delete", $book);
+			return;
+		} else if (count($this->parameters) == 2 && $this->parameters[1] == "confirmed") {
+			$book = $bookService->get($this->parameters[0]);
+			$bookService->remove($book[0]);
+			$bookService->writeFile();
+		}
+
+		header("location:".URL."books/index");
 	}
 }
