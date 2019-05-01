@@ -30,7 +30,7 @@ require_once 'application/model/user.php';
  * User service.
  *
  * @author giuliobosco
- * @version 1.0.2 (2019-04-17 - 2019-05-01)
+ * @version 1.0.3 (2019-04-17 - 2019-05-01)
  */
 class UserService implements service {
 
@@ -110,7 +110,7 @@ class UserService implements service {
 	public function addByKeyArray(array $data):object {
 		$requiredValues = array('username', 'first_name', 'last_name', 'password', 'address', 'born_date', 'kind');
 		foreach ($requiredValues as $requiredValue) {
-			if (!isset($_POST[$requiredValues])) {
+			if (!array_key_exists($requiredValue, $data)) {
 				throw new Exception("No required value: $requiredValue");
 			}
 		}
