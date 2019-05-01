@@ -24,7 +24,7 @@
  */
 /**
  * @author giuliobosco
- * @version 1.0 (2019-05-01 - 2019-05-01)
+ * @version 1.0.1 (2019-05-01 - 2019-05-01)
  */
 
 if (count($data) > 0):
@@ -76,7 +76,8 @@ if (count($data) > 0):
 		</div>
 
 		<div>
-			<a class="btn" href="<?php echo URL; ?>users/delete/<?php echo $user->getUsername(); ?>/confirmed">DELETE</a>
+			<a style="color: #ffffff; background-color: #ff0000;" class="btn"
+			   href="<?php echo URL; ?>users/delete/<?php echo $user->getUsername(); ?>/confirmed">DELETE</a>
 			<a class="btn" href="<?php echo URL; ?>users/index/<?php echo $user->getUsername(); ?>">Cancel</a>
 		</div>
 	</div>
