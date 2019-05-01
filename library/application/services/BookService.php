@@ -30,7 +30,7 @@ require_once 'application/model/book.php';
  * Book Service.
  *
  * @author giuliobosco
- * @version 1.0.4 (2019-04-17 - 2019-05-01)
+ * @version 1.0.5 (2019-04-17 - 2019-05-01)
  */
 class BookService implements service {
 
@@ -121,7 +121,7 @@ class BookService implements service {
 	public function addByKeyArray(array $data):object {
 		$requiredValues = array('isbn', 'title', 'author', 'year', 'edition');
 		foreach ($requiredValues as $requiredValue) {
-			if (!isset($data[$requiredValue])) {
+			if (!array_key_exists($requiredValue, $data)) {
 				throw new Exception("No required value: $requiredValue");
 			}
 		}
