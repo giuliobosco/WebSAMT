@@ -24,7 +24,7 @@
  */
 /**
  * @author giuliobosco
- * @version 1.0
+ * @version 1.0.1 (2019-05-01 - 2019-05-01)
  */
 
 $books = $data;
@@ -45,7 +45,7 @@ $books = $data;
 			<th></th>
 		</tr>
 
-		<?php foreach ($books as $key=>$book): ?>
+		<?php foreach ($books as $book): ?>
 			<tr>
 				<td><?php echo($book->getIsbn()); ?></td>
 				<td><?php echo($book->getTitle()); ?></td>
@@ -53,7 +53,7 @@ $books = $data;
 				<td><?php echo($book->getYear()); ?></td>
 				<td><?php echo($book->getEdition()); ?></td>
 				<th>
-					<a href="<?php echo URL; ?>books/index/<?php echo $key; ?>">
+					<a href="<?php echo URL; ?>books/index/<?php echo $book->getId(); ?>">
 						Detail
 					</a>
 				</th>

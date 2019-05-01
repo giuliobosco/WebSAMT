@@ -27,7 +27,7 @@ require_once "controller.php";
 
 /**
  * @author giuliobosco
- * @version 1.0.1 (2019-05-01 - 2019-05-01)
+ * @version 1.0.2 (2019-05-01 - 2019-05-01)
  */
 class books extends Controller {
 	public function __construct(array $parameters) {
@@ -43,12 +43,12 @@ class books extends Controller {
 	public function index():void {
 		$bookService = new BookService();
 		$bookService->loadFile();
-		$books = $bookService->get();
 
 		if (count($this->parameters) > 0) {
-			$book = array($books[$this->parameters[0]]);
+			$book = $bookService->get($this->parameters);
 			$this->req_view("details", $book);
 		} else {
+			$books = $bookService->get();
 			$this->req_view("index", $books);
 		}
 	}
