@@ -30,7 +30,7 @@ require_once 'application/model/book.php';
  * Book Service.
  *
  * @author giuliobosco
- * @version 1.0.2 (2019-04-17 - 2019-05-01)
+ * @version 1.0.3 (2019-04-17 - 2019-05-01)
  */
 class BookService implements service {
 
@@ -165,7 +165,7 @@ class BookService implements service {
 			return $this->books;
 		} else {
 			foreach ($this->books as $book) {
-				if ($book->getIsbn() == $id) {
+				if ($book->getId() == $id[0]) {
 					return array($book);
 				}
 			}
