@@ -26,7 +26,7 @@
 
 /**
  * @author giuliobosco
- * @version 1.0 (2019-05-08 - 2019-05-08)
+ * @version 1.0.1 (2019-05-08 - 2019-05-14)
  */
 class Calculator {
 
@@ -40,6 +40,9 @@ class Calculator {
 	 * @return float|int Sqrt of x.
 	 */
 	public function sqrt($x) {
+		if ($x < 0) {
+			throw new InvalidArgumentException($x);
+		}
 		$sqrt = 0;
 
 		while (intval($sqrt * $sqrt) != $x) {
