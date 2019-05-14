@@ -27,7 +27,7 @@
  * PHP MVC Application.
  *
  * @author giuliobosco
- * @version 1.0.3 (2019-03-13 - 2019-03-20)
+ * @version 1.0.4 (2019-03-13 - 2019-03-20)
  */
 class Application {
 
@@ -61,7 +61,6 @@ class Application {
 
 			// create the controller
 			$this->controller = new $this->url_controller($this->url_parameters);
-
 			if (method_exists($this->controller, $this->url_action)) {
 				// check if the action exists
 				$this->controller->{$this->url_action}();
@@ -86,10 +85,12 @@ class Application {
 			$url = filter_var($url, FILTER_SANITIZE_URL); // sanitize url
 			$url = explode('/', $url);                 // expolode in arrays in between '/'
 
-			if (count($url) > 1) {
+			if (count($url) > 0) {
 				// check if the url contains at least 2 elements
 				$this->url_controller = $url[0];                // set the controller
-				$this->url_action = $url[1];                    // set the controller action
+				if (count($url) > 1) {
+					$this->url_action = $url[1];                    // set the controller action
+				}
 
 				$parameters = array();                          // create array for parameters
 
