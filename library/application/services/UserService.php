@@ -30,7 +30,7 @@ require_once 'application/model/user.php';
  * User service.
  *
  * @author giuliobosco
- * @version 1.0.3 (2019-04-17 - 2019-05-01)
+ * @version 1.0.4 (2019-04-17 - 2019-05-14)
  */
 class UserService implements service {
 
@@ -160,6 +160,24 @@ class UserService implements service {
 		}
 
 		return null;
+	}
+
+	/**
+	 * Check if user credentials are right.
+	 *
+	 * @param string $username Username of the user.
+	 * @param string $password Password of the user.
+	 * @return bool True if credentials are right.
+	 */
+	public static function userExists(string $username, string $password):bool {
+		$userService = new UserService();
+		$userService->loadFile();
+		$user = $userService->get($username);
+		if (count($user) == 1) {
+			return $user->isRightPassword($password);
+		}
+
+		return false;
 	}
 
 	/**
