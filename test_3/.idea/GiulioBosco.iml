@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/esercizio1/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/esercizio1/vendor/doctrine/instantiator" />
+      <excludeFolder url="file://$MODULE_DIR$/esercizio1/vendor/myclabs/deep-copy" />
+      <excludeFolder url="file://$MODULE_DIR$/esercizio1/vendor/phar-io/manifest" />
+      <excludeFolder url="file://$MODULE_DIR$/esercizio1/vendor/phar-io/version" />
+      <excludeFolder url="file://$MODULE_DIR$/esercizio1/vendor/phpdocumentor/reflection-common" />
+      <excludeFolder url="file://$MODULE_DIR$/esercizio1/vendor/phpdocumentor/reflection-docblock" />
+      <excludeFolder url="file://$MODULE_DIR$/esercizio1/vendor/phpdocumentor/type-resolver" />
+      <excludeFolder url="file://$MODULE_DIR$/esercizio1/vendor/phpspec/prophecy" />
+      <excludeFolder url="file://$MODULE_DIR$/esercizio1/vendor/phpunit/php-code-coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/esercizio1/vendor/phpunit/php-file-iterator" />
+      <excludeFolder url="file://$MODULE_DIR$/esercizio1/vendor/phpunit/php-text-template" />
+      <excludeFolder url="file://$MODULE_DIR$/esercizio1/vendor/phpunit/php-timer" />
+      <excludeFolder url="file://$MODULE_DIR$/esercizio1/vendor/phpunit/php-token-stream" />
+      <excludeFolder url="file://$MODULE_DIR$/esercizio1/vendor/phpunit/phpunit" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

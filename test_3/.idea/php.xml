@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/esercizio1/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/esercizio1/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/esercizio1/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/esercizio1/vendor/composer" />
+      <path value="$PROJECT_DIR$/esercizio1/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/esercizio1/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/esercizio1/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/esercizio1/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/esercizio1/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/esercizio1/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/esercizio1/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/esercizio1/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/esercizio1/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/esercizio1/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/esercizio1/vendor/doctrine/instantiator" />
+    </include_path>
+  </component>
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings load_method="CUSTOM_LOADER" custom_loader_path="$PROJECT_DIR$/esercizio1/vendor/autoload.php" />
+    </phpunit_settings>
+  </component>
+</project>
