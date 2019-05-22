@@ -1,52 +1,49 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: giulio.bosco
- * Date: 15.05.2019
- * Time: 08:40
- */
 
 include_once "Product.php";
 include_once "ShoppingCart.php";
 include_once "vendor\autoload.php";
+
 use PHPUnit\Framework\TestCase;
 
-class ShoppingCartTest extends TestCase
-{
-    protected $shoppingCart;
+/**
+ * Class ShoppingCartTest
+ *
+ * @author giuliobosco
+ * @version 1.1 (2019-05-15 - 2019-05-15)
+ */
+class ShoppingCartTest extends TestCase {
 
-    protected function setUp()
-    {
-        $this->shoppingCart = new ShoppingCart();
-    }
+	protected $shoppingCart;
+	protected $book;
 
-    public function testEmpty() {
-        $this->setUp();
-        assertTrue($this->shoppingCart->getItemCount() == 0);
-    }
+	protected function setUp() {
+		$this->shoppingCart = new ShoppingCart();
+	}
 
-    /**
-     * @depends testEmpty
-     */
-    public function testAddItem() {
-        $item  = new Product("Prodotto 1", 100);
-        $this->shoppingCart->addItem($item);
+	public function testEmpty() {
+		$this->book = new Product("Unit testing", 29.95);
+		$this->shoppingCart->setEmpty();
+		$this->assertEquals(0, $this->shoppingCart->getItemCount());
+	}
 
-        assertTrue($this->shoppingCart->getBalance() == 100);
-    }
+	public function testAddItem() {
+		$item = new Product("Prodotto 1", 100);
+		$this->shoppingCart->addItem($item);
+		$expectedBalance = $this->book->getPrice() + $item->getPrice();
+		$this->assertEquals($expectedBalance, $this->shoppingCart->getBalance());
+	}
 
-    /**
-     * @depends testAddItem
-     */
-    public function testRemoveItem() {
-        $this->shoppingCart->removeItemByTitle("Prodotto 1");
-        assertTrue($this->shoppingCart->getItemCount() == 0);
-        assertTrue($this->shoppingCart->getBalance() == 0);
-    }
+	public function testRemoveItem() {
+		$this->shoppingCart->removeItemByTitle($this->book->getTitle());
+		$this->assertEquals(0, $this->shoppingCart->getItemCount());
+		$this->assertEquals(0, $this->shoppingCart->getBalance());
+	}
 
-    public function testRemoveItemNotInCart() {
-        $this->expectException(ProductNotFoundException::class);
-        $this->shoppingCart->removeItemByTitle("Prodotto non esistente");
-    }
+	public function testRemoveItemNotInCart() {
+		$this->expectException(ProductNotFoundException::class);
+		$notExistentProduct = new Product("prodotto non esistente", 29.95);
+		$this->shoppingCart->removeItemByTitle($notExistentProduct->getTitle());
+	}
 
 }
