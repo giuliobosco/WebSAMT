@@ -29,7 +29,10 @@
  * @version 1.0.2 (2019-03-13 - 2019-03-20)
  */
 
-require "controller.php";
+require_once "application/services/UserService.php";
+require_once "application/controllers/users.php";
+require_once "application/helper/LibrarySession.php";
+require_once "controller.php";
 
 class home extends Controller {
 
@@ -44,7 +47,7 @@ class home extends Controller {
 	/**
 	 * Require the index of the home controller.
 	 */
-	public function index():void {
+	public function index(): void {
 		$this->requireHeader();
 		require "application/views/home/index.html";
 		$this->requireFooter();
@@ -53,9 +56,40 @@ class home extends Controller {
 	/**
 	 * Test parameters.
 	 */
-	public function parameters():void {
+	public function parameters(): void {
 		$this->requireHeader();
 		require "application/views/home/parameters.php";
 		$this->requireFooter();
 	}
+
+	public function login(): void {
+		if ($_POST) {
+			if (isset($_POST['username']) && isset($_POST['password'])) {
+				if (empty($_POST['username'])) {
+					$this->req_view("login", $_POST, array("insert username and password"));
+					return;
+				}
+
+				if (empty($_POST['password'])) {
+					$this->req_view("login", array(), array("insert username and password"));
+					return;
+				}
+
+				$username = strval(htmlspecialchars($_POST['username']));
+				$password = strval(htmlspecialchars($_POST['password']));
+
+				if (UserService::userExists($username, $password)) {
+					LibrarySession::setCookie($username);
+				} else {
+					$this->req_view("login", $_POST, array("wrong username or password"));
+				}
+			}
+			return;
+		}
+
+		$this->req_view("login", array());
+	}
 }
+
+//setcookie('times', '',time() - 1);
+//setcookie('username', '', time() - 1);
