@@ -24,6 +24,7 @@
  */
 
 require_once "controller.php";
+require_once "application/helper/LibrarySession.php";
 
 /**
  * @author giuliobosco
@@ -32,15 +33,17 @@ require_once "controller.php";
 class loans extends Controller {
 	public function __construct(array $parameters) {
 		parent::__construct($parameters);
-		$this->req_model_service();
+		if (LibrarySession::isCookieSet()) {
+			$this->req_model_service();
+		}
 	}
 
-	private function req_model_service():void {
+	private function req_model_service(): void {
 		require_once "application/model/loan.php";
 		require_once "application/services/LoanService.php";
 	}
 
-	public function index():void {
+	public function index(): void {
 		$loanService = new LoanService();
 		$loanService->loadFile();
 
@@ -53,7 +56,7 @@ class loans extends Controller {
 		}
 	}
 
-	public function create():void {
+	public function create(): void {
 		if (count($_POST) > 0) {
 			try {
 				$loanService = new LoanService();
@@ -77,12 +80,14 @@ class loans extends Controller {
 			$loan = $loanService->get($this->parameters[0]);
 			$this->req_view("delete", $loan);
 			return;
-		} else if (count($this->parameters) == 2 && $this->parameters[1] == "confirmed") {
-			$loan = $loanService->get($this->parameters[0]);
-			$loanService->remove($loan[0]);
-			$loanService->writeFile();
+		} else {
+			if (count($this->parameters) == 2 && $this->parameters[1] == "confirmed") {
+				$loan = $loanService->get($this->parameters[0]);
+				$loanService->remove($loan[0]);
+				$loanService->writeFile();
+			}
 		}
 
-		header("location:".URL."loans/index");
+		header("location:" . URL . "loans/index");
 	}
 }
