@@ -3,7 +3,7 @@
 include_once "Product.php";
 include_once "ShoppingCart.php";
 include_once "ProductNotFoundException.php";
-include_once "vendor\autoload.php";
+include_once "vendor/autoload.php";
 
 use PHPUnit\Framework\TestCase;
 
@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  * Class ShoppingCartTest
  *
  * @author giuliobosco
- * @version 1.1 (2019-05-15 - 2019-05-29)
+ * @version 1.1.1 (2019-05-15 - 2019-05-29)
  */
 class ShoppingCartTest extends TestCase {
 
