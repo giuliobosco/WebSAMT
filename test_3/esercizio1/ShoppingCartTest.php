@@ -2,6 +2,7 @@
 
 include_once "Product.php";
 include_once "ShoppingCart.php";
+include_once "ProductNotFoundException.php";
 include_once "vendor\autoload.php";
 
 use PHPUnit\Framework\TestCase;
@@ -10,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  * Class ShoppingCartTest
  *
  * @author giuliobosco
- * @version 1.1 (2019-05-15 - 2019-05-15)
+ * @version 1.1 (2019-05-15 - 2019-05-29)
  */
 class ShoppingCartTest extends TestCase {
 
@@ -19,10 +20,11 @@ class ShoppingCartTest extends TestCase {
 
 	protected function setUp() {
 		$this->shoppingCart = new ShoppingCart();
+		$this->book = new Product("Unit testing", 29.95);
+		$this->shoppingCart->addItem($this->book);
 	}
 
 	public function testEmpty() {
-		$this->book = new Product("Unit testing", 29.95);
 		$this->shoppingCart->setEmpty();
 		$this->assertEquals(0, $this->shoppingCart->getItemCount());
 	}
