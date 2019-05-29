@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>register</title>
+	
+	<link rel="stylesheet" type="text/css"
+	      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	      crossorigin="anonymous">
+</head>
+<body>
+
+<h1>Collect info</h1>
+
+<form action="register.php" method="post">
+	<table class="table">
+		<tr>
+			<th>Your info</th>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Firstname</td>
+			<td><input class="input-lg" type="text" name="firstname" required></td>
+		</tr>
+		<tr>
+			<td>Lastname</td>
+			<td><input type="text" name="lastname" required></td>
+		</tr>
+		<tr>
+			<td>Born date</td>
+			<td><input type="date" name="borndate" required></td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td><input type="email" name="email" required></td>
+		</tr>
+		<tr>
+			<th>Address:</th>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Street</td>
+			<td><input type="text" name="address[street]" required></td>
+		</tr>
+		<tr>
+			<td>Postcode</td>
+			<td><input type="text" name="address[postcode]" required></td>
+		</tr>
+		<tr>
+			<td>City</td>
+			<td><input type="text" name="address[city]" required></td>
+		</tr>
+		<tr>
+			<td>Notes</td>
+			<td><textarea name="notes"></textarea></td>
+		</tr>
+		<tr>
+			<td><input type="submit" class="btn-danger"></td>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+</form>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
