@@ -1,0 +1,18 @@
+propel:
+  database:
+      connections:
+          bookstore:
+              adapter: mysql
+              classname: Propel\Runtime\Connection\ConnectionWrapper
+              dsn: "mysql:host=localhost;dbname=consulting"
+              user: my_db_user
+              password: s3cr3t
+              attributes:
+  runtime:
+      defaultConnection: consulting
+      connections:
+          - consulting
+  generator:
+      defaultConnection: consulting
+      connections:
+          - consulting
