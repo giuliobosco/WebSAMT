@@ -1,7 +1,7 @@
 propel:
   database:
       connections:
-          bookstore:
+          consulting:
               adapter: mysql
               classname: Propel\Runtime\Connection\ConnectionWrapper
               dsn: "mysql:host=localhost;dbname=consulting"
