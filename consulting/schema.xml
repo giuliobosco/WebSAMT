@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="consulting" defaultIdMethod="native">
+	<table name="consultant" phpName="Consultant">
+		<column name="id" type="integer" requried="true" primaryKey="true" autoIncrement="true"/>
+		<column name="lastname" type="varchar" size="64" required="true"/>
+		<column name="email" type="varchar" size="64" required="true"/>
+	</table>
+	<table name="client" phpName="Client">
+		<column name="id" type="integer" requried="true" primaryKey="true" autoIncrement="true"/>
+		<column name="lastname" type="varchar" size="64" required="true"/>
+	</table>
+	<table name="consulting" phpName="Consulting">
+		<column name="id" type="integer" requried="true" primaryKey="true" autoIncrement="true"/>
+		<column name="consultant" type="integer" required="true"/>
+		<column name="client" type="integer" requried="true"/>
+		<foreign-key foreignTable="consultant">
+      		<reference local="consultant" foreign="id"/>
+    	</foreign-key>
+    	<foreign-key foreignTable="client">
+      		<reference local="client" foreign="id"/>
+    	</foreign-key>
+	</table>
+</database>
