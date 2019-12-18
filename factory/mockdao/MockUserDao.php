@@ -8,30 +8,28 @@ class MockUserDao implements IDao {
 	public static $data = array();
 
 	public function __construct() {
-		self::$data = array(
-			new User(1, "Bryan", "Beffa"),
-			new User(2, "Gabriele", "Alessi"),
-			new User(3, "Giulio", "Bosco")
-		);
+		if (count(self::$data) == 0) {
+			self::$data = array(new User(1, "Bryan", "Beffa"), new User(2, "Gabriele", "Alessi"), new User(3, "Giulio", "Bosco"));
+		}
 	}
 
-	function get() {
+	public function get() {
 		return self::$data;
 	}
 
-	function getById($id) {
+	public function getById($id) {
 		return self::$data[0];
 	}
 
-	function insert($object) {
+	public function insert($object) {
 		array_push(self::$data, $object);
 	}
 
-	function update($object) {
+	public function update($object) {
 		throw new Exception();
 	}
 
-	function delete($object) {
+	public function delete($object) {
 		throw new Exception();
 	}
 }
