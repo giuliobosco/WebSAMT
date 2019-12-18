@@ -5,7 +5,7 @@ class User {
     private $name;
     private $surname;
 
-    function __constructor(int $id, string $name, string $surname) {
+    public function __constructor($id, $name, $surname) {
         $this->id = $id;
         $this->name = $name;
         $this->surname = $surname;
